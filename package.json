@@ -1,0 +1,25 @@
+{
+  "name": "alimentary",
+  "version": "1.0.0",
+  "description": "Grocery List App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zermich/alimentary.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zermich/alimentary/issues"
+  },
+  "homepage": "https://github.com/zermich/alimentary#readme",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.17"
+  }
+}
