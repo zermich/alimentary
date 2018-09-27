@@ -19,9 +19,6 @@ class TableRow extends Component {
     return(
       <tr>
         <td>
-          {this.props.obj._id}
-        </td>
-        <td>
           {this.props.obj.item}
         </td>
         <td>
