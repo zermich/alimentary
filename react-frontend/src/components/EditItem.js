@@ -15,7 +15,7 @@ class EditItem extends Component {
   }
 
   componentDidMount(){
-    axios.get('http://localhost:4200/edit/'+this.props.match.params.id)
+    axios.get('http://localhost:4200/items/edit/'+this.props.match.params.id)
           .then( res => {
             this.setState({
               items: res.data
@@ -34,8 +34,8 @@ class EditItem extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.addItemService.updateData(this.state.value, this.props.match.params.id);
-    this.props.history.push('/index');
+    this.addItemService.updateData(this.state.items, this.props.match.params.id);
+    this.props.history.push('/');
   }
 
   render() {
