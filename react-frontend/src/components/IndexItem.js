@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ItemService from './ItemService';
 import axios from 'axios';
 import TableRow from './TableRow';
+import { Link } from 'react-router-dom';
 
 class IndexItem extends Component {
 
@@ -44,6 +45,13 @@ class IndexItem extends Component {
           <tbody>
             {this.tabRow()}
           </tbody>
+          <tfoot>
+            <tr>
+              <td>
+                <Link to={'/add-item'} className='btn btn-primary'>Add Item</Link>
+              </td>
+            </tr>
+          </tfoot>
         </table>
       </div>
     )
