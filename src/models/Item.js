@@ -6,6 +6,9 @@ var Item = new Schema({
   item: {
     type: String
   }
+},
+{
+  timestamps: true
 }, {
   collection: 'items'
 });
