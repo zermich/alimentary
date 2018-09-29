@@ -40,6 +40,7 @@ class IndexItem extends Component {
           <thead>
             <tr>
               <td>Item</td>
+              <td>Date Added</td>
             </tr>
           </thead>
           <tbody>
