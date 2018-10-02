@@ -20,6 +20,13 @@ class TableRow extends Component {
     return(
       <tr>
         <td>
+          <input type='checkbox'
+                  name='isPurchased'
+                  checked={this.state.isPurchased}
+                  onChange={this.handleCheckboxChange}
+          />
+        </td>
+        <td>
           {this.props.obj.item}
         </td>
         <td>
