@@ -5,6 +5,10 @@ var Schema = mongoose.Schema;
 var Item = new Schema({
   item: {
     type: String
+  },
+  isPurchased: {
+    type: Boolean,
+    default: false
   }
 },
 {

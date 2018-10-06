@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import AddItem from './components/AddItem';
 import EditItem from './components/EditItem';
 import { BrowserRouter as Router, Route } from 'react-router-dom';

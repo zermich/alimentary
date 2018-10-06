@@ -10,32 +10,41 @@ class EditItem extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      items: ''
+      item: ''
     };
   }
 
   componentDidMount(){
-    axios.get('http://localhost:4200/items/edit/'+this.props.match.params.id)
-          .then( res => {
-            this.setState({
-              items: res.data
-            });
-          })
-          .catch ( err => {
-            console.log(err);
-          })
+    axios.get('http://localhost:4200/items/' + this.props.match.params.id)
+      .then( res => {
+        this.setState({
+          item: res.data.item
+        });
+      })
+      .catch ( err => {
+        console.log(err);
+      });
   }
 
   handleChange(event) {
     this.setState({
-      items: event.target.value
+      item: event.target.value
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.addItemService.updateData(this.state.items, this.props.match.params.id);
-    this.props.history.push('/');
+    this.addItemService.updateData(this.state.item, this.props.match.params.id)
+    .then( res => {
+      this.setState({
+        item: res.data.item
+      }, () => {
+        this.props.history.push('/');
+      });
+    })
+    .catch( err => {
+      console.log(err);
+    });
   }
 
   render() {
@@ -44,7 +53,7 @@ class EditItem extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             Edit Item:
-            <input type='text' value={this.state.items.item} onChange={this.handleChange} className='form-control' />
+            <input type='text' value={this.state.item} onChange={this.handleChange} className='form-control' />
           </label><br/>
           <input type='submit' value='Update' className='btn btn-primary' />
         </form>

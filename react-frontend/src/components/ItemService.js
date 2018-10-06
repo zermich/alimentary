@@ -3,7 +3,7 @@ import axios from 'axios';
 class ItemService {
 
   sendData(data) {
-    axios.post('http://localhost:4200/items/add/post', {
+    axios.post('http://localhost:4200/items/', {
       item: data
     })
           .then(res => {
@@ -15,21 +15,27 @@ class ItemService {
   }
 
   updateData(data, id) {
-    axios.post('http://localhost:4200/items/update/'+id, {
+    return axios.put('http://localhost:4200/items/'+id, {
       item: data
-    })
-          .then( res => {
-            this.setState({
-              items: res.data
-            })
-          })
-          .catch( err => {
-            console.log(err)
-          })
+    });
   }
 
+  // updateToggle(data, id) {
+  //   axios.put('http://localhost:4200/, {
+  //     isPurchased: data
+  //   })
+  //         .then( res => {
+  //           this.setState({
+  //             items: res.data
+  //           })
+  //         })
+  //         .catch( err => {
+  //           console.log(err)
+  //         })
+  // }
+
   deleteData(id) {
-    axios.get('http://localhost:4200/items/delete/'+id)
+    axios.delete('http://localhost:4200/items/'+id)
           .then(
             console.log('Deleted')
           )

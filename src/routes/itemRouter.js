@@ -6,7 +6,7 @@ var itemRouter = express.Router();
 var Item = require('../models/Item');
 
 // Defined store route
-itemRouter.route('/add/post').post( (req, res) => {
+itemRouter.route('/').post( (req, res) => {
   var item = new Item(req.body);
       item.save()
           .then(item => {
@@ -30,7 +30,7 @@ itemRouter.route('/').get( (req, res) => {
 });
 
 // Defined edit route
-itemRouter.route('/edit/:id').get( (req, res) => {
+itemRouter.route('/:id').get( (req, res) => {
   var id = req.params.id;
   Item.findById(id, (err, item) => {
     res.json(item);
@@ -38,17 +38,24 @@ itemRouter.route('/edit/:id').get( (req, res) => {
 });
 
 // Defined update route
-itemRouter.route('/update/:id').post( (req, res) => {
+itemRouter.route('/:id').put( (req, res) => {
   Item.findById(req.params.id, (err, item) => {
     if (!item) {
       return next(new Error('Could not load Document'));
     }
     else {
       // do your updates here
-      item.item = req.body.item;
+      if (req.body.item) {
+        item.item = req.body.item;
+      }
+      if (req.body.isPurchased) {
+        item.isPurchased = req.body.isPurchased;
+      }
+
+      console.log('item: ', item);
 
       item.save().then(item => {
-        res.json('Update complete');
+        res.json(item);
       })
       .catch(err => {
         res.status(400).send('Unable to update the database');
@@ -58,7 +65,7 @@ itemRouter.route('/update/:id').post( (req, res) => {
 });
 
 // Defined delete | remove | destroy route
-itemRouter.route('/delete/:id').get((req, res) => {
+itemRouter.route('/:id').delete((req, res) => {
   Item.findByIdAndRemove({_id: req.params.id},
   (err,item) => {
     if(err) {

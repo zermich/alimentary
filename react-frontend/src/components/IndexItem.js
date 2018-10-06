@@ -48,7 +48,7 @@ class IndexItem extends Component {
           </tbody>
           <tfoot>
             <tr>
-              <td>
+              <td colSpan="5">
                 <Link to={'/add-item'} className='btn btn-primary'>Add Item</Link>
               </td>
             </tr>
