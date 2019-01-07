@@ -3,7 +3,6 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const User = require('../models/user.model');
-const plainTextPassword1 = "DFGh5546*%^__90";
 
 router.post('/signup', (req, res, next) => {
    bcrypt.hash(req.body.password, 10, function(err, hash){
@@ -31,6 +30,35 @@ router.post('/signup', (req, res, next) => {
       }
    });
 });
+
+
+
+router.post('/signin', (req, res, next) => {
+    User.findOne({email: req.body.email})
+    .exec()
+    .then(function(user) {
+       bcrypt.compare(req.body.password, user.password, function(err, result){
+          if(err) {
+             return res.status(401).json({
+                failed: 'Unauthorized Access'
+             });
+          }
+          if(result) {
+             return res.status(200).json({
+                success: 'Welcome to the JWT Auth'
+             });
+          }
+          return res.status(401).json({
+             failed: 'Unauthorized Access'
+          });
+       });
+    })
+    .catch(error => {
+       res.status(500).json({
+          error: error
+       });
+    });;
+ });
 
 router.post('/test', (req, res, next) => {
 //  console.log("email is", req.body.email);
