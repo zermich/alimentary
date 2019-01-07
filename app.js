@@ -19,6 +19,13 @@ mongoose.connect('mongodb://zermich:PeterPan01@ds115283.mlab.com:15283/alimentar
 
 // Required application specific custom router module
 var itemRouter = require('./src/routes/itemRouter');
+const userRouter = require('./src/routes/user.route');
+
+app.get('/checking', (req, res) => {
+  res.json({
+     "Tutorial": "Welcome to the Node express JWT Tutorial"
+  });
+});
 
 // Use middlewares to set view engine and post json data to the server
 app.use(express.static('public'));
@@ -27,6 +34,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use('/items', itemRouter);
+app.use('/user', userRouter);
 
 // Start the server
 app.listen(port, () => {
