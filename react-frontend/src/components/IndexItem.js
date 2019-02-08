@@ -50,6 +50,7 @@ class IndexItem extends Component {
             <tr>
               <td colSpan="5">
                 <Link to={'/add-item'} className='btn btn-primary'>Add Item</Link>
+                <Link to={'/login'} className='btn btn-primary'>Login</Link>
               </td>
             </tr>
           </tfoot>
