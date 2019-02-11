@@ -17,13 +17,13 @@ class Login extends Component {
 
       handleUserInput(event) {
         this.setState({
-                userValue: event.target.value
+            userValue: event.target.value
         })
       }
 
       handlePasswordInput(event) {
         this.setState({
-                passwordValue: event.target.value
+            passwordValue: event.target.value
         })
       }
     
