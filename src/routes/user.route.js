@@ -70,6 +70,23 @@ router.post('/signin', (req, res, next) => {
     });;
  });
 
+ //Check Authorization to access /add-item page, redirects to /login if token missing/expired
+router.post('/checkAuth', (req, res, next) => {
+   //if jwt sent in header sets to token var
+   let token = req.headers['x-access-token'];
+   if (token === null) return res.status(401).send({ auth: false, message: 'No token provided.' });
+   //Checks if token is valid
+   jwt.verify(token, process.env.JWT_SECRET, (err, jwtres) => {
+      if (err) {
+         console.log('jwt verify err is ', err);
+         console.log('jwt verify err, token is ', token);
+         res.json({ allowAccess: false });
+         return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
+      }
+      res.json({ allowAccess: true });		  
+   });
+});
+
 router.post('/test', (req, res, next) => {
 //  console.log("email is", req.body.email);
     res.json({
