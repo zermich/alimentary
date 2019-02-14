@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
 import localforage from 'localforage';
 import axios from 'axios';
-import AddItem from './AddItem';
 
 export default function requireAuthentication(Component) {
     class Authenticator extends React.Component {
@@ -22,7 +21,7 @@ export default function requireAuthentication(Component) {
                     'Content-Type': 'application/json',
                     'x-access-token': result
                     }
-                    axios.post(`/user/checkAuth`, null , {headers: headers})
+                    axios.post(`http://localhost:4200/user/checkAuth`, null , {headers: headers})
                     .then( res => {
                     this.setState({
                         token: res.data.allowAccess
@@ -50,7 +49,7 @@ export default function requireAuthentication(Component) {
             return (
                 <div>
                     {this.state.token || true ?
-                    <AddItem {...this.props}/> : 'YOU SHALL NOT PASS'
+                    <Component {...this.props}/> : 'YOU SHALL NOT PASS'
                     }
                 </div>
             )
