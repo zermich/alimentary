@@ -46,6 +46,9 @@ class TableRow extends Component {
           {this.props.obj.item}
         </td>
         <td>
+          {this.props.obj.user}
+        </td>
+        <td>
           {moment(this.props.obj.createdAt).format('MM/DD/YYYY')}
         </td>
         <td>

@@ -9,6 +9,9 @@ var Item = new Schema({
   isPurchased: {
     type: Boolean,
     default: false
+  },
+  user: {
+    type: String
   }
 },
 {

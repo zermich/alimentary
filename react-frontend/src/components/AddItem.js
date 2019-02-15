@@ -6,7 +6,8 @@ class AddItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      item: ''
+      item: '',
+      user: ''
     };
     this.addItemService = new ItemService();
 
@@ -16,13 +17,15 @@ class AddItem extends Component {
 
   handleChange(event) {
     this.setState({
-      item: event.target.value
+      item: event.target.value,
+      user: this.props.user
     })
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.addItemService.sendData(this.state.item);
+    const itemData = { item: this.state.item, user: this.state.user};
+    this.addItemService.sendData(itemData);
     this.props.history.push('/');
   }
   
@@ -31,7 +34,7 @@ class AddItem extends Component {
       <div className="container">
         <form onSubmit={this.handleSubmit}>
           <label>
-            Add Item:
+            {this.props.user} Add Item:
             <input type="text" value={this.state.item} onChange={this.handleChange} className="form-control" />
           </label><br/>
           <input type="submit" value="Submit" className="btn btn-primary" />

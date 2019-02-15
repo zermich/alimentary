@@ -4,7 +4,8 @@ class ItemService {
 
   sendData(data) {
     axios.post('http://localhost:4200/items/', {
-      item: data
+      item: data.item,
+      user: data.user
     })
           .then(res => {
             console.log(res);

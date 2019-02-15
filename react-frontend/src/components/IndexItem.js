@@ -39,7 +39,9 @@ class IndexItem extends Component {
         <table className='table table-striped'>
           <thead>
             <tr>
+              <td>Purchased</td>
               <td>Item</td>
+              <td>User</td>
               <td>Date Added</td>
             </tr>
           </thead>

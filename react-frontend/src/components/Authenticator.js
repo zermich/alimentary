@@ -19,8 +19,6 @@ export default function requireAuthentication(Component) {
         componentWillMount() {
             localforage.getItem('token')
                 .then( result => {
-                    // const decoded = jwtDecode(result);
-                    // const tokenUser = decoded.email;
                     const headers = {
                     'Content-Type': 'application/json',
                     'x-access-token': result
@@ -42,10 +40,7 @@ export default function requireAuthentication(Component) {
             if(!token) {
                 this.setState({redirect: true});
             } else {
-                const decoded = jwtDecode(result);
-                const tokenUser = decoded.email;
-                this.setState({redirect: false, userValue: tokenUser});
-                console.log('userValue is', this.state.userValue);
+                this.setState({redirect: false, userValue: (jwtDecode(result)).email});
             }
         }
 
@@ -56,7 +51,7 @@ export default function requireAuthentication(Component) {
             return (
                 <div>
                     {this.state.token || true ?
-                    <Component {...this.props}/> : 'YOU SHALL NOT PASS'
+                    <Component {...this.props} user={this.state.userValue} /> : 'YOU SHALL NOT PASS'
                     }
                 </div>
             )
