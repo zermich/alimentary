@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
 import localforage from 'localforage';
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 
 export default function requireAuthentication(Component) {
     class Authenticator extends React.Component {
@@ -10,13 +11,16 @@ export default function requireAuthentication(Component) {
             super(props);
             this.state = {
                 redirect: false,
-                token: false
+                token: false,
+                userValue: ""
             }
         }
 
         componentWillMount() {
             localforage.getItem('token')
                 .then( result => {
+                    // const decoded = jwtDecode(result);
+                    // const tokenUser = decoded.email;
                     const headers = {
                     'Content-Type': 'application/json',
                     'x-access-token': result
@@ -26,7 +30,7 @@ export default function requireAuthentication(Component) {
                     this.setState({
                         token: res.data.allowAccess
                     });
-                    this.checkAuth(this.state.token);
+                    this.checkAuth(this.state.token, result);
                     })
                     .catch ( err => {
                     console.log(err);
@@ -34,11 +38,14 @@ export default function requireAuthentication(Component) {
                 });
         }
 
-        checkAuth(token) {
+        checkAuth(token, result) {
             if(!token) {
                 this.setState({redirect: true});
             } else {
-                this.setState({redirect: false});
+                const decoded = jwtDecode(result);
+                const tokenUser = decoded.email;
+                this.setState({redirect: false, userValue: tokenUser});
+                console.log('userValue is', this.state.userValue);
             }
         }
 
