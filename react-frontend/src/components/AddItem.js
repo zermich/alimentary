@@ -33,9 +33,10 @@ class AddItem extends Component {
   render() {
     return(
       <div className="container">
+        <p>You are logged in as: {this.props.user}</p>
         <form onSubmit={this.handleSubmit}>
           <label>
-            {this.props.user} Add Item:
+            Add Item:
             <input type="text" value={this.state.item} onChange={this.handleChange} className="form-control" />
           </label><br/>
           <input type="submit" value="Submit" className="btn btn-primary" />
