@@ -26,6 +26,7 @@ class AddItem extends Component {
     event.preventDefault();
     const itemData = { item: this.state.item, user: this.state.user};
     this.addItemService.sendData(itemData);
+    console.log('props are', this.props);
     this.props.history.push('/');
   }
   

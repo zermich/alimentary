@@ -30,7 +30,7 @@ class Login extends Component {
       handleSubmit(event) {
         event.preventDefault();
         const user = { userValue: this.state.userValue, passwordValue: this.state.passwordValue};
-        this.addUserService.sendLoginData(user);
+        this.addUserService.sendLoginData(user, ()=> {this.props.history.push("/add-item");});
       }
 
     render() {

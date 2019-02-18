@@ -40,7 +40,7 @@ export default function requireAuthentication(Component) {
             if(!token) {
                 this.setState({redirect: true});
             } else {
-                this.setState({redirect: false, userValue: (jwtDecode(result)).email});
+                this.setState({redirect: false, userValue: (jwtDecode(result)).user});
             }
         }
 

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 // define collection and schema for User
 const User = new Schema({
-    email: {
+    user: {
       type: String,
       required: true
     },

@@ -3,12 +3,12 @@ import localforage from 'localforage';
 
 class UserService {
 
-    sendLoginData(data) {
+    sendLoginData(data, callback) {
         const headers = {
             'Content-Type': 'application/json'
         }
         axios.post('http://localhost:4200/user/signin/', {
-          email: data.userValue,
+          user: data.userValue,
           password: data.passwordValue
         }, { headers })
               .then(res => {
@@ -19,7 +19,8 @@ class UserService {
                             return localforage.getItem('token');
                         })
                         .then( value => {
-                            alert('You have successfully logged in');
+                            console.log('You have successfully logged in');
+                            callback();
                         })
                         .catch( err => {});
                 } else {

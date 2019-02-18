@@ -15,7 +15,7 @@ router.post('/signup', (req, res, next) => {
       else {
          const user = new User({
             _id: new  mongoose.Types.ObjectId(),
-            email: req.body.email,
+            user: req.body.user,
             password: hash    
          });
          user.save().then(function(result) {
@@ -35,7 +35,7 @@ router.post('/signup', (req, res, next) => {
 
 
 router.post('/signin', (req, res, next) => {
-    User.findOne({email: req.body.email})
+    User.findOne({user: req.body.user})
     .exec()
     .then(function(user) {
        bcrypt.compare(req.body.password, user.password, function(err, result){
@@ -46,7 +46,7 @@ router.post('/signin', (req, res, next) => {
           }
           if(result) {
             const JWTToken = jwt.sign({
-                 email: user.email,
+                 user: user.user,
                  _id: user._id
                },
                 process.env.JWT_SECRET,
@@ -90,7 +90,7 @@ router.post('/checkAuth', (req, res, next) => {
 router.post('/test', (req, res, next) => {
 //  console.log("email is", req.body.email);
     res.json({
-        "Test": req.body.email
+        "Test": req.body.user
     });
 });
 
