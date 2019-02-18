@@ -4,7 +4,7 @@ import axios from 'axios';
 import TableRow from './TableRow';
 import { Link } from 'react-router-dom';
 
-class IndexItem extends Component {
+class Homepage extends Component {
 
   constructor(props) {
     super(props);
@@ -63,4 +63,4 @@ class IndexItem extends Component {
 
 }
 
-export default IndexItem;
+export default Homepage;
