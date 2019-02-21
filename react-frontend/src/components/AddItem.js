@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ItemService from './ItemService';
+import {withRouter} from 'react-router-dom';
 
 class AddItem extends Component {
 
@@ -25,9 +26,12 @@ class AddItem extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const itemData = { item: this.state.item, user: this.state.user};
-    this.addItemService.sendData(itemData);
-    console.log('props are', this.props);
-    this.props.history.push('/');
+    this.addItemService.sendData(itemData, res => {
+      this.props.history.push({
+        pathname: '/'
+      });
+      console.log('Pushed to homepage');
+    });
   }
   
   render() {
@@ -46,4 +50,4 @@ class AddItem extends Component {
   }
 }
 
-export default AddItem;
+export default withRouter(AddItem);

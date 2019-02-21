@@ -2,17 +2,18 @@ import axios from 'axios';
 
 class ItemService {
 
-  sendData(data) {
+  sendData(data, successCallback) {
     axios.post('http://localhost:4200/items/', {
       item: data.item,
       user: data.user
     })
-          .then(res => {
-            console.log(res);
-          })
-          .catch( err => {
-            console.log(err);
-          })
+    .then(res => {
+      console.debug('success');
+      successCallback(res);
+    })
+    .catch(err => {
+      console.error(err);
+    });
   }
 
   updateData(data, id) {
@@ -36,13 +37,7 @@ class ItemService {
   // }
 
   deleteData(id) {
-    axios.delete('http://localhost:4200/items/'+id)
-          .then(
-            console.log('Deleted')
-          )
-          .catch( err => {
-            console.log(err)
-          })
+    return axios.delete('http://localhost:4200/items/'+id);
   }
 }
 

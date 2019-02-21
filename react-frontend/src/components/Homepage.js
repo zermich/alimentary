@@ -1,28 +1,29 @@
 import React, { Component } from 'react';
-import ItemService from './ItemService';
+// import ItemService from './ItemService';
 import axios from 'axios';
 import TableRow from './TableRow';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class Homepage extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
-      items: ''
+      items: '',
+      derivedValue: false
     };
-    this.addItemService = new ItemService();
   }
 
   componentDidMount(){
-      axios.get('http://localhost:4200/items')
+    console.log('Homepage mounted');
+    axios.get('http://localhost:4200/items')
       .then(res => {
         this.setState({ items: res.data });
+        console.log('Items after mount are ', this.state.items);
       })
       .catch(err => {
         console.log(err);
-      })
+      });
   }
 
   tabRow() {
@@ -63,4 +64,4 @@ class Homepage extends Component {
 
 }
 
-export default Homepage;
+export default withRouter(Homepage);

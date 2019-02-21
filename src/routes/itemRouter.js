@@ -66,7 +66,7 @@ itemRouter.route('/:id').put( (req, res) => {
 
 // Defined delete | remove | destroy route
 itemRouter.route('/:id').delete((req, res) => {
-  Item.findByIdAndRemove({_id: req.params.id},
+  Item.findOneAndDelete({_id: req.params.id},
   (err,item) => {
     if(err) {
       res.json(err);
