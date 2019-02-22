@@ -36,8 +36,15 @@ class ItemService {
   //         })
   // }
 
-  deleteData(id) {
-    return axios.delete('http://localhost:4200/items/'+id);
+  deleteData(id, successCallback) {
+    return axios.delete('http://localhost:4200/items/'+id)
+    .then(res => {
+      console.debug('success');
+      successCallback(res);
+    })
+    .catch(err => {
+      console.error(err);
+    });
   }
 }
 

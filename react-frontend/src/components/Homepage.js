@@ -1,25 +1,37 @@
 import React, { Component } from 'react';
 // import ItemService from './ItemService';
 import axios from 'axios';
-import TableRow from './TableRow';
 import { Link, withRouter } from 'react-router-dom';
+
+import TableRow from './TableRow';
+import requireAuthentication from './Authenticator';
+import AddItem from './AddItem';
+
+const ItemAction = requireAuthentication(AddItem);
 
 class Homepage extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      items: '',
-      derivedValue: false
+      items: ''
     };
   }
 
-  componentDidMount(){
-    console.log('Homepage mounted');
+  updateItemList() {
+    axios.get('http://localhost:4200/items')
+    .then(res => {
+      this.setState({ items: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
+
+  componentDidMount() {
     axios.get('http://localhost:4200/items')
       .then(res => {
         this.setState({ items: res.data });
-        console.log('Items after mount are ', this.state.items);
       })
       .catch(err => {
         console.log(err);
@@ -37,6 +49,7 @@ class Homepage extends Component {
   render() {
     return (
       <div className='container'>
+        <ItemAction />
         <table className='table table-striped'>
           <thead>
             <tr>

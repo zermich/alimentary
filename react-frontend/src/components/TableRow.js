@@ -17,8 +17,8 @@ class TableRow extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.addItemService.deleteData(this.props.obj._id).then(res => {
-      // Good place to make the row greyed out and say "Deleted, undo?" with a button.
+    this.addItemService.deleteData(this.props.obj._id, res => {
+      
     });
   }
 
