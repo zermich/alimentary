@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import ItemService from './Services/ItemService';
+import ItemService from '../Service/ItemService';
 
 class EditItem extends Component {
 

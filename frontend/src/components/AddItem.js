@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ItemService from './Services/ItemService';
+import ItemService from '../Service/ItemService';
 import {withRouter} from 'react-router-dom';
 
 class AddItem extends Component {

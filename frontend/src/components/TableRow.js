@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import ItemService from './Services/ItemService';
+import ItemService from '../Service/ItemService';
 import moment from 'moment';
 
 class TableRow extends Component {
