@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-// import ItemService from './ItemService';
+// import ItemService from '../Service/ItemService';
 import axios from 'axios';
 import { Link, withRouter } from 'react-router-dom';
 
 import TableRow from './TableRow';
 import requireAuthentication from './Authenticator';
 import AddItem from './AddItem';
+import UserContainer from './User/UserContainer';
 
 const ItemAction = requireAuthentication(AddItem);
 
@@ -49,7 +50,9 @@ class Homepage extends Component {
   render() {
     return (
       <div className='container'>
-        <ItemAction />
+        <h1>Alimentary</h1>
+        <UserContainer />
+        {/* <ItemAction /> */}
         <table className='table table-striped'>
           <thead>
             <tr>

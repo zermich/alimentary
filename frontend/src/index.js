@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AddItem from './components/AddItem';
 import EditItem from './components/EditItem';
-import Login from './components/Login';
+import Login from './components/User/Login';
 import requireAuthentication from './components/Authenticator';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Homepage from './components/Homepage';

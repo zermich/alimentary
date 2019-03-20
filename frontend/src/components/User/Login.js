@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserService from './Services/UserService';
+import UserService from '../../Service/UserService';
 
 class Login extends Component {
 
@@ -40,17 +40,20 @@ class Login extends Component {
 
     render() {
         return (
-            <form>
-                <label>
-                    Username:
-                    <input type="text" name="user" value={this.state.userValue} onChange={ e => this.handleUserInput(e) } />
-                </label><br/>
-                <label>
-                    Password:
-                    <input type="text" name="password" value={this.state.passwordValue} onChange={ e => this.handlePasswordInput(e) } />
-                </label><br/>
-                <button type="submit" onClick={this.handleSubmit}>Submit</button>
-            </form>
+            <div>
+                <p>Log in to add item.</p>
+                <form>
+                    <label>
+                        Username:
+                        <input type="text" name="user" value={this.state.userValue} onChange={ e => this.handleUserInput(e) } />
+                    </label><br/>
+                    <label>
+                        Password:
+                        <input type="text" name="password" value={this.state.passwordValue} onChange={ e => this.handlePasswordInput(e) } />
+                    </label><br/>
+                    <button type="submit" onClick={this.handleSubmit}>Submit</button>
+                </form>
+            </div>
         )
     }
 

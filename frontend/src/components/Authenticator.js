@@ -5,7 +5,7 @@ import localforage from 'localforage';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 
-import Login from './Login';
+import Login from './User/Login';
 
 export default function requireAuthentication(Component) {
     class Authenticator extends React.Component {
