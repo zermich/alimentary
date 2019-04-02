@@ -11,11 +11,11 @@ class TableRow extends Component {
       isPurchased: false
     }
     this.addItemService = new ItemService();
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
   }
 
-  handleSubmit(event) {
+  handleDelete(event) {
     event.preventDefault();
     this.addItemService.deleteData(this.props.obj._id, res => {
       
@@ -57,7 +57,7 @@ class TableRow extends Component {
           <Link to={'/edit/'+this.props.obj._id} className='btn btn-primary'>Edit</Link>
         </td>
         <td>
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleDelete}>
             <input type='submit' value='Delete' className='btn btn-danger' />
           </form>
         </td>
