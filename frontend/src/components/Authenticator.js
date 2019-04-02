@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Redirect} from 'react-router-dom';
+// import {Redirect} from 'react-router-dom';
 import localforage from 'localforage';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';

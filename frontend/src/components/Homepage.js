@@ -4,11 +4,11 @@ import axios from 'axios';
 import { Link, withRouter } from 'react-router-dom';
 
 import TableRow from './TableRow';
-import requireAuthentication from './Authenticator';
-import AddItem from './AddItem';
+// import requireAuthentication from './Authenticator';
+// import AddItem from './AddItem';
 import UserContainer from './User/UserContainer';
 
-const ItemAction = requireAuthentication(AddItem);
+// const ItemAction = requireAuthentication(AddItem);
 
 class Homepage extends Component {
 

@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import UserService from '../../Service/UserService';
 
+import AddItem from '../AddItem';
+
 class Login extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             userValue: "",
-            passwordValue: ""
+            passwordValue: "",
+            loggedIn: false
         };
         this.addUserService = new UserService();
         this.handleUserInput = this.handleUserInput.bind(this);
@@ -35,10 +38,13 @@ class Login extends Component {
       handleSubmit(event) {
         event.preventDefault();
         const user = { userValue: this.state.userValue, passwordValue: this.state.passwordValue};
-        this.addUserService.sendLoginData(user, ()=> {this.props.history.push("/add-item");});
+        this.addUserService.sendLoginData(user, ()=> {this.setState({ loggedIn: true })});
       }
 
     render() {
+        if(this.state.loggedIn) {
+            return ( <AddItem user={this.state.userValue} /> );
+        }
         return (
             <div>
                 <p>Log in to add item.</p>
