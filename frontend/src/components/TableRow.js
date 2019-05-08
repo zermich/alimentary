@@ -3,12 +3,18 @@ import { Link } from 'react-router-dom';
 import ItemService from '../Service/ItemService';
 import moment from 'moment';
 
+const defaultStyle = {  };
+const deleteStyle = {  
+  backgroundColor: '#d06666'
+};
+
 class TableRow extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      isPurchased: this.props.obj.isPurchased
+      isPurchased: this.props.obj.isPurchased,
+      rowStyle: defaultStyle
     }
     this.addItemService = new ItemService();
     this.handleDelete = this.handleDelete.bind(this);
@@ -18,7 +24,9 @@ class TableRow extends Component {
   handleDelete(event) {
     event.preventDefault();
     this.addItemService.deleteData(this.props.obj._id, res => {
-      
+      this.setState({
+        rowStyle: deleteStyle
+      })
     });
   }
 
@@ -32,7 +40,7 @@ class TableRow extends Component {
 
   render() {
     return(
-      <tr>
+      <tr style={this.state.rowStyle} >
         <td>
           <input type='checkbox'
                   name='isPurchased'
