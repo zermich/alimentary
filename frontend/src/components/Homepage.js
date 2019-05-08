@@ -66,12 +66,12 @@ class Homepage extends Component {
             {this.tabRow()}
           </tbody>
           <tfoot>
-            <tr>
+            {/* <tr>
               <td colSpan="5">
                 <Link to={'/add-item'} className='btn btn-primary'>Add Item</Link>
                 <Link to={'/login'} className='btn btn-primary'>Login</Link>
               </td>
-            </tr>
+            </tr> */}
           </tfoot>
         </table>
       </div>
