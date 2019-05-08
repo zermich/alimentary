@@ -8,7 +8,7 @@ class TableRow extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isPurchased: false
+      isPurchased: this.props.obj.isPurchased
     }
     this.addItemService = new ItemService();
     this.handleDelete = this.handleDelete.bind(this);
@@ -23,15 +23,11 @@ class TableRow extends Component {
   }
 
   handleCheckboxChange(event){
-    console.log('State is originally ' +this.state.isPurchased);
-    const target = event.target;
     this.setState({
-      isPurchased: target.checked
+      isPurchased: event.target.checked
     }, () => {
-      console.log(`State is now ${this.state.isPurchased}`);
+      this.addItemService.updateToggle(this.state.isPurchased, this.props.obj._id);
     });
-
-    //this.addItemService.updateToggle(this.state.isPurchased);
   }
 
   render() {

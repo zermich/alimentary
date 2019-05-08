@@ -22,19 +22,17 @@ class ItemService {
     });
   }
 
-  // updateToggle(data, id) {
-  //   axios.put('http://localhost:4200/, {
-  //     isPurchased: data
-  //   })
-  //         .then( res => {
-  //           this.setState({
-  //             items: res.data
-  //           })
-  //         })
-  //         .catch( err => {
-  //           console.log(err)
-  //         })
-  // }
+  updateToggle(data, id) {
+    axios.put('http://localhost:4200/items/'+id, {
+      isPurchased: data
+    })
+          .then( res => {
+            
+          })
+          .catch( err => {
+            console.log(err)
+          })
+  }
 
   deleteData(id, successCallback) {
     return axios.delete('http://localhost:4200/items/'+id)

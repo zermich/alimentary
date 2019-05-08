@@ -51,9 +51,6 @@ itemRouter.route('/:id').put( (req, res) => {
       if (req.body.isPurchased) {
         item.isPurchased = req.body.isPurchased;
       }
-
-      console.log('item: ', item);
-
       item.save().then(item => {
         res.json(item);
       })
