@@ -43,7 +43,7 @@ class Homepage extends Component {
   tabRow() {
     if(this.state.items instanceof Array) {
       return this.state.items.map( (object, i) => {
-        return <TableRow obj={object} key={i} />;
+        return <TableRow obj={object} key={i} callbackFromHomepage={this.updateItemList} />;
       })
     }
   }
