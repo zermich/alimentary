@@ -4,11 +4,11 @@ import axios from 'axios';
 import { Link, withRouter } from 'react-router-dom';
 
 import TableRow from './TableRow';
-// import requireAuthentication from './Authenticator';
-// import AddItem from './AddItem';
+import requireAuthentication from './Authenticator';
+import AddItem from './AddItem';
 import UserContainer from './User/UserContainer';
 
-// const ItemAction = requireAuthentication(AddItem);
+const ItemAction = requireAuthentication(AddItem);
 
 class Homepage extends Component {
 
@@ -17,6 +17,7 @@ class Homepage extends Component {
     this.state = {
       items: ''
     };
+    this.updateItemList = this.updateItemList.bind(this);
   }
 
   updateItemList() {
@@ -51,8 +52,8 @@ class Homepage extends Component {
     return (
       <div className='container'>
         <h1>Alimentary</h1>
-        <UserContainer />
-        {/* <ItemAction /> */}
+        {/* <UserContainer /> */}
+        <ItemAction callbackFromHomepage={this.updateItemList} />
         <table className='table table-striped'>
           <thead>
             <tr>

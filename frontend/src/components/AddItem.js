@@ -48,7 +48,7 @@ class AddItem extends Component {
       this.props.history.push({
         pathname: '/'
       });
-      console.log('Pushed to homepage');
+      this.props.callbackFromHomepage("List updated from AddItem");
     });
   }
   
