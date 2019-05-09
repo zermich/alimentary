@@ -12,6 +12,9 @@ class AddItem extends Component {
     this.state = {
       item: '',
       user: '',
+      quantity: '',
+      notes: '',
+      category: 'other',
       logOut: false
     };
     this.addItemService = new ItemService();
@@ -35,15 +38,19 @@ class AddItem extends Component {
   }
 
   handleChange(event) {
+    // this.setState({
+    //   item: event.target.value,
+    //   user: this.props.user
+    // })
     this.setState({
-      item: event.target.value,
+      [event.target.name]: event.target.value,
       user: this.props.user
     })
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    const itemData = { item: this.state.item, user: this.state.user};
+    const itemData = { item: this.state.item, user: this.state.user, quantity: this.state.quantity, notes: this.state.notes, category: this.state.category};
     this.addItemService.sendData(itemData, res => {
       this.props.history.push({
         pathname: '/'
@@ -63,7 +70,30 @@ class AddItem extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             Add Item:
-            <input type="text" value={this.state.item} onChange={this.handleChange} className="form-control" />
+            <input type="text" name="item" value={this.state.item} onChange={this.handleChange} className="form-control" />
+          </label><br/>
+          <label>
+            Category:&nbsp;
+            <select name="category" onChange={this.handleChange}>
+              <option value='other'>Other</option>
+              <option value='bakery'>Bakery</option>
+              <option value='baking'>Baking</option>
+              <option value='condiments'>Condiments</option>
+              <option value='dairy'>Dairy</option>
+              <option value='deli'>Deli</option>
+              <option value='frozen'>Frozen</option>
+              <option value='home'>Home</option>
+              <option value='meat'>Meat</option>
+              <option value='produce'>Produce</option>
+            </select>
+          </label><br />
+          <label>
+            Quantity:
+            <input type="text" name="quantity" value={this.state.quantity} onChange={this.handleChange} className="form-control" />
+          </label><br/>
+          <label>
+            Notes:
+            <textarea type="text" name="notes" value={this.state.notes} onChange={this.handleChange} className="form-control" />
           </label><br/>
           <input type="submit" value="Submit" className="btn btn-primary" />
         </form>

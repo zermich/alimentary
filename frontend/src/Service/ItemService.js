@@ -5,7 +5,10 @@ class ItemService {
   sendData(data, successCallback) {
     axios.post('http://localhost:4200/items/', {
       item: data.item,
-      user: data.user
+      user: data.user,
+      quantity: data.quantity,
+      notes: data.notes,
+      category: data.category
     })
     .then(res => {
       console.debug('success');
@@ -18,7 +21,11 @@ class ItemService {
 
   updateData(data, id) {
     return axios.put('http://localhost:4200/items/'+id, {
-      item: data
+      item: data.item,
+      user: data.user,
+      quantity: data.quantity,
+      notes: data.notes,
+      category: data.category
     });
   }
 

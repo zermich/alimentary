@@ -47,6 +47,9 @@ itemRouter.route('/:id').put( (req, res) => {
       // do your updates here
       if (req.body.item) {
         item.item = req.body.item;
+        item.quantity = req.body.quantity;
+        item.notes = req.body.notes;
+        item.category = req.body.category;
       }
       if (req.body.isPurchased) {
         item.isPurchased = req.body.isPurchased;

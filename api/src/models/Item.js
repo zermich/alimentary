@@ -12,6 +12,15 @@ var Item = new Schema({
   },
   user: {
     type: String
+  },
+  quantity: {
+    type: String
+  },
+  notes: {
+    type: String
+  },
+  category: {
+    type: String
   }
 },
 {
