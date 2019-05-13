@@ -17,6 +17,7 @@ class EditItem extends Component {
     };
   }
 
+  // Fetches item data and sets state/fills in form
   componentDidMount(){
     axios.get('http://localhost:4200/items/' + this.props.match.params.id)
       .then( res => {
@@ -32,12 +33,14 @@ class EditItem extends Component {
       });
   }
 
+  // Changes the state of the selected input
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
     });
   }
 
+  // Sends updated state data to update item in db
   handleSubmit(event) {
     event.preventDefault();
     const itemData = { item: this.state.item, user: this.state.user, quantity: this.state.quantity, notes: this.state.notes, category: this.state.category};

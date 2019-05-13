@@ -9,6 +9,7 @@ class Logout extends Component {
         };
     }
 
+    // Removes token from local storage logging user out
     handleSubmit(e) {
         e.preventDefault();
 

@@ -15,6 +15,7 @@ class TableRow extends Component {
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
   }
 
+  // On delete button click runs callback on Homepage component to reload items from db
   handleDelete(event) {
     event.preventDefault();
     this.addItemService.deleteData(this.props.obj._id, res => {
@@ -22,6 +23,7 @@ class TableRow extends Component {
     });
   }
 
+  // On checkbox click toggles isPurchased value in db
   handleCheckboxChange(event){
     this.setState({
       isPurchased: event.target.checked

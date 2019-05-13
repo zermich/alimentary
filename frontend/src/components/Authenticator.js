@@ -18,6 +18,7 @@ export default function requireAuthentication(Component) {
             }
         }
 
+        // Checks local storage for token, checks with api if token is valid, sets state token to true if located, passes state token boolean and axios result to checkAuth()
         componentWillMount() {
             localforage.getItem('token')
                 .then( result => {
@@ -38,6 +39,7 @@ export default function requireAuthentication(Component) {
                 });
         }
 
+        // Checks if token boolean is true. If this.state.token is false, sets state redirect to true. If this.state.token is true, decodes token to retrieve user and set as this.state.userValue
         checkAuth(token, result) {
             if(!token) {
                 this.setState({redirect: true});

@@ -2,6 +2,7 @@ import axios from 'axios';
 
 class ItemService {
 
+  // Posts new item data
   sendData(data, successCallback) {
     axios.post('http://localhost:4200/items/', {
       item: data.item,
@@ -19,6 +20,7 @@ class ItemService {
     });
   }
 
+  // Updates item data
   updateData(data, id) {
     return axios.put('http://localhost:4200/items/'+id, {
       item: data.item,
@@ -29,6 +31,7 @@ class ItemService {
     });
   }
 
+  // Updates item isPurchased value
   updateToggle(data, id) {
     axios.put('http://localhost:4200/items/'+id, {
       isPurchased: data
@@ -41,6 +44,7 @@ class ItemService {
           })
   }
 
+  // Removes item from database
   deleteData(id, successCallback) {
     return axios.delete('http://localhost:4200/items/'+id)
     .then(res => {

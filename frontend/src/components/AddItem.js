@@ -24,6 +24,7 @@ class AddItem extends Component {
     this.handleLogout = this.handleLogout.bind(this);
   }
 
+  // Removes token from local storage and sets this.state.logOut to true
   handleLogout(e) {
     e.preventDefault();
 
@@ -37,17 +38,15 @@ class AddItem extends Component {
     });
   }
 
+  // Changes state for target input, sets this.state.user from props
   handleChange(event) {
-    // this.setState({
-    //   item: event.target.value,
-    //   user: this.props.user
-    // })
     this.setState({
       [event.target.name]: event.target.value,
       user: this.props.user
     })
   }
 
+  // Sends updated item data from state to db
   handleSubmit(event) {
     event.preventDefault();
     const itemData = { item: this.state.item, user: this.state.user, quantity: this.state.quantity, notes: this.state.notes, category: this.state.category};

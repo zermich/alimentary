@@ -18,12 +18,14 @@ class Login extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
       }
 
+      // Sets this.state.userValue with input data
       handleUserInput(event) {
         this.setState({
             userValue: event.target.value
         })
       }
 
+      // Sets this.state.passwordValue with input data
       handlePasswordInput(event) {
         this.setState({
             passwordValue: event.target.value
@@ -35,6 +37,7 @@ class Login extends Component {
           this.setState({[event.target.name]: event.target.value});
       }
     
+      // Sends state data to api to validate login info
       handleSubmit(event) {
         event.preventDefault();
         const user = { userValue: this.state.userValue, passwordValue: this.state.passwordValue};
@@ -42,6 +45,7 @@ class Login extends Component {
       }
 
     render() {
+        // if loggedIn is true loads AddItem component with user data, otherwise loads Login fields
         if(this.state.loggedIn) {
             return ( <AddItem user={this.state.userValue} /> );
         }

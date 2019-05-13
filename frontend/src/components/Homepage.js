@@ -7,6 +7,7 @@ import TableRow from './TableRow';
 import requireAuthentication from './Authenticator';
 import AddItem from './AddItem';
 
+// Runs the function requireAuthentication from Authenticator, asking for login info and validating before displaying AddItem component
 const ItemAction = requireAuthentication(AddItem);
 
 class Homepage extends Component {
@@ -20,6 +21,7 @@ class Homepage extends Component {
     this.updateItemList = this.updateItemList.bind(this);
   }
 
+  // Fetches items from database on props callback from child component
   updateItemList() {
     axios.get('http://localhost:4200/items')
     .then(res => {
@@ -30,6 +32,7 @@ class Homepage extends Component {
     });
   }
 
+  // Fetches items from database on component mount, adds res with items to state
   componentDidMount() {
     axios.get('http://localhost:4200/items')
       .then(res => {
@@ -45,6 +48,7 @@ class Homepage extends Component {
       });
   }
 
+  // Maps through state items to create item row with TableRow component
   tableRow() {
     if(this.state.items instanceof Array) {
       return this.state.items.map( (object, i) => {
@@ -57,7 +61,6 @@ class Homepage extends Component {
     return (
       <div className='container'>
         <h1>Alimentary</h1>
-        {/* <UserContainer /> */}
         <ItemAction callbackFromHomepage={this.updateItemList} />
         <table className='table table-striped'>
           <thead>
@@ -74,12 +77,6 @@ class Homepage extends Component {
             {this.tableRow()}
           </tbody>
           <tfoot>
-            {/* <tr>
-              <td colSpan="5">
-                <Link to={'/add-item'} className='btn btn-primary'>Add Item</Link>
-                <Link to={'/login'} className='btn btn-primary'>Login</Link>
-              </td>
-            </tr> */}
           </tfoot>
         </table>
       </div>
