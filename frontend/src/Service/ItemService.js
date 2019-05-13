@@ -2,6 +2,17 @@ import axios from 'axios';
 
 class ItemService {
 
+  fetchAllItems(successCallback){
+    axios.get('http://localhost:4200/items/')
+        .then(res => {
+          console.debug('success');
+          successCallback(res);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+  }
+
   // Posts new item data
   sendData(data, successCallback) {
     axios.post('http://localhost:4200/items/', {

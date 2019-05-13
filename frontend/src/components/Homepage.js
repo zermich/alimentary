@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import ItemService from '../Service/ItemService';
-import axios from 'axios';
+import ItemService from '../Service/ItemService';
 import { withRouter } from 'react-router-dom';
 
 import TableRow from './TableRow';
@@ -18,33 +17,37 @@ class Homepage extends Component {
       items: ''
       // categories: []
     };
+    this.addItemService = new ItemService();
     this.updateItemList = this.updateItemList.bind(this);
   }
 
   // Fetches items from database on props callback from child component
   updateItemList() {
-    axios.get('http://localhost:4200/items')
-    .then(res => {
+    this.addItemService.fetchAllItems( res => {
       this.setState({ items: res.data });
-    })
-    .catch(err => {
-      console.log(err);
     });
   }
 
+  // // Fetches items from database on props callback from child component
+  // updateItemList() {
+  //   axios.get('http://localhost:4200/items')
+  //   .then(res => {
+  //     this.setState({ items: res.data });
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   });
+  // }
+
   // Fetches items from database on component mount, adds res with items to state
   componentDidMount() {
-    axios.get('http://localhost:4200/items')
-      .then(res => {
-        this.setState({ items: res.data });
+    this.addItemService.fetchAllItems( res => {
+      this.setState({ items: res.data });
         // for(let i=0; i<res.data.length; i++) {
         //   if(res.data[i].category != null) {
         //     this.state.categories.push(res.data[i].category);
         //   }
         // }
-      })
-      .catch(err => {
-        console.log(err);
       });
   }
 
