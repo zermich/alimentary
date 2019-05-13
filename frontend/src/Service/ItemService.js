@@ -1,9 +1,14 @@
 import axios from 'axios';
 
+const localhost = 'http://localhost:4200/items/';
+const server = '';
+
+const address = localhost;
+
 class ItemService {
 
   fetchAllItems(successCallback){
-    axios.get('http://localhost:4200/items/')
+    axios.get(address)
         .then(res => {
           console.debug('success');
           successCallback(res);
@@ -14,7 +19,7 @@ class ItemService {
   }
 
   fetchItem(id, successCallback){
-    axios.get('http://localhost:4200/items/' + id)
+    axios.get(address + id)
         .then(res => {
           console.debug('success');
           successCallback(res);
@@ -26,7 +31,7 @@ class ItemService {
 
   // Posts new item data
   sendData(data, successCallback) {
-    axios.post('http://localhost:4200/items/', {
+    axios.post(address, {
       item: data.item,
       user: data.user,
       quantity: data.quantity,
@@ -44,7 +49,7 @@ class ItemService {
 
   // Updates item data
   updateData(data, id) {
-    return axios.put('http://localhost:4200/items/'+id, {
+    return axios.put(address+id, {
       item: data.item,
       user: data.user,
       quantity: data.quantity,
@@ -55,7 +60,7 @@ class ItemService {
 
   // Updates item isPurchased value
   updateToggle(data, id) {
-    axios.put('http://localhost:4200/items/'+id, {
+    axios.put(address+id, {
       isPurchased: data
     })
           .then( res => {
@@ -68,7 +73,7 @@ class ItemService {
 
   // Removes item from database
   deleteData(id, successCallback) {
-    return axios.delete('http://localhost:4200/items/'+id)
+    return axios.delete(address+id)
     .then(res => {
       console.debug('success');
       successCallback(res);

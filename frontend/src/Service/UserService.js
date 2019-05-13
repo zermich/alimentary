@@ -1,6 +1,11 @@
 import axios from 'axios';
 import localforage from 'localforage';
 
+const localhost = 'http://localhost:4200/user/';
+const server = '';
+
+const address = localhost;
+
 class UserService {
 
   // Sends user/password data for authentication, if authentication successful adds Json Web Token to local storage with localforage
@@ -8,7 +13,7 @@ class UserService {
       const headers = {
           'Content-Type': 'application/json'
       }
-      axios.post('http://localhost:4200/user/signin/', {
+      axios.post(address+'signin/', {
         user: data.userValue,
         password: data.passwordValue
       }, { headers })
