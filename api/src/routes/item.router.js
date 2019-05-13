@@ -3,7 +3,7 @@ var app = express();
 var itemRouter = express.Router();
 
 // Require Item model in our routes module
-var Item = require('../models/Item');
+var Item = require('../models/item.model');
 
 // Defined store route
 itemRouter.route('/').post( (req, res) => {

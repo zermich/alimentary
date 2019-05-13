@@ -2,8 +2,8 @@ var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-var port = 4200;
 var cors = require('cors');
+var port = 4200;
 
 // Mongoose connection with mlab mongodb
 mongoose.Promise = require('bluebird');
@@ -18,8 +18,8 @@ mongoose.connect('mongodb://zermich:PeterPan01@ds115283.mlab.com:15283/alimentar
 
 
 // Required application specific custom router module
-var itemRouter = require('./src/routes/itemRouter');
-const userRouter = require('./src/routes/user.route');
+var itemRouter = require('./src/routes/item.router');
+const userRouter = require('./src/routes/user.router');
 
 
 // Use middlewares to set view engine and post json data to the server

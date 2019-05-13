@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const User = require('../models/user.model');
 const jwt = require('jsonwebtoken');
 
+// Add User to database and hash password
 router.post('/signup', (req, res, next) => {
    bcrypt.hash(req.body.password, 10, function(err, hash){
       if(err) {
@@ -33,7 +34,7 @@ router.post('/signup', (req, res, next) => {
 });
 
 
-
+// Login user with password authentication, assigns client Json Web Token
 router.post('/signin', (req, res, next) => {
     User.findOne({user: req.body.user})
     .exec()
@@ -85,13 +86,6 @@ router.post('/checkAuth', (req, res, next) => {
       }
       res.json({ allowAccess: true });		  
    });
-});
-
-router.post('/test', (req, res, next) => {
-//  console.log("email is", req.body.email);
-    res.json({
-        "Test": req.body.user
-    });
 });
 
 module.exports = router;
