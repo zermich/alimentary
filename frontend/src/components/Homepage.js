@@ -28,17 +28,6 @@ class Homepage extends Component {
     });
   }
 
-  // // Fetches items from database on props callback from child component
-  // updateItemList() {
-  //   axios.get('http://localhost:4200/items')
-  //   .then(res => {
-  //     this.setState({ items: res.data });
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //   });
-  // }
-
   // Fetches items from database on component mount, adds res with items to state
   componentDidMount() {
     this.addItemService.fetchAllItems( res => {
