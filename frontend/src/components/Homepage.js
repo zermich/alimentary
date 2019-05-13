@@ -65,9 +65,9 @@ class Homepage extends Component {
               <td>Purchased</td>
               <td>Item</td>
               <td>Quantity</td>
+              <td>Notes</td>
               <td>User</td>
               <td>Date Added</td>
-              <td>Notes</td>
             </tr>
           </thead>
           <tbody>

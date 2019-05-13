@@ -47,13 +47,13 @@ class TableRow extends Component {
           {this.props.obj.quantity}
         </td>
         <td>
+          {this.props.obj.notes}
+        </td>
+        <td>
           {this.props.obj.user}
         </td>
         <td>
           {moment(this.props.obj.createdAt).format('MM/DD/YYYY')}
-        </td>
-        <td>
-          {this.props.obj.notes}
         </td>
         <td>
           <Link to={'/edit/'+this.props.obj._id} className='btn btn-primary'>Edit</Link>
