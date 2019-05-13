@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 // import ItemService from '../Service/ItemService';
 import axios from 'axios';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import TableRow from './TableRow';
 import requireAuthentication from './Authenticator';
 import AddItem from './AddItem';
-import UserContainer from './User/UserContainer';
 
 const ItemAction = requireAuthentication(AddItem);
 
@@ -16,6 +15,7 @@ class Homepage extends Component {
     super(props);
     this.state = {
       items: ''
+      // categories: []
     };
     this.updateItemList = this.updateItemList.bind(this);
   }
@@ -34,13 +34,18 @@ class Homepage extends Component {
     axios.get('http://localhost:4200/items')
       .then(res => {
         this.setState({ items: res.data });
+        // for(let i=0; i<res.data.length; i++) {
+        //   if(res.data[i].category != null) {
+        //     this.state.categories.push(res.data[i].category);
+        //   }
+        // }
       })
       .catch(err => {
         console.log(err);
       });
   }
 
-  tabRow() {
+  tableRow() {
     if(this.state.items instanceof Array) {
       return this.state.items.map( (object, i) => {
         return <TableRow obj={object} key={i} callbackFromHomepage={this.updateItemList} />;
@@ -59,12 +64,14 @@ class Homepage extends Component {
             <tr>
               <td>Purchased</td>
               <td>Item</td>
+              <td>Quantity</td>
               <td>User</td>
               <td>Date Added</td>
+              <td>Notes</td>
             </tr>
           </thead>
           <tbody>
-            {this.tabRow()}
+            {this.tableRow()}
           </tbody>
           <tfoot>
             {/* <tr>
