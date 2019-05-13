@@ -1,36 +1,31 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import ItemService from '../Service/ItemService';
 
 class EditItem extends Component {
 
   constructor(props){
     super(props);
-    this.addItemService = new ItemService();
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       item: '',
       category: '',
       quantity: '',
       notes: ''
     };
+    this.addItemService = new ItemService();
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   // Fetches item data and sets state/fills in form
   componentDidMount(){
-    axios.get('http://localhost:4200/items/' + this.props.match.params.id)
-      .then( res => {
+    this.addItemService.fetchItem(this.props.match.params.id, res => {
         this.setState({
           item: res.data.item,
           category: res.data.category,
           quantity: res.data.quantity,
           notes: res.data.notes
         });
-      })
-      .catch ( err => {
-        console.log(err);
-      });
+    });
   }
 
   // Changes the state of the selected input
