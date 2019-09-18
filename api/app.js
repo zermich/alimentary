@@ -28,6 +28,15 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+app.options('*', cors());
+
+//Set CORS headers
+app.use((req, res, next) => {
+	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept');
+	next();
+});
+
 app.use('/items', itemRouter);
 app.use('/user', userRouter);
 
