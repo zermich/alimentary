@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/zermich/alimentary#readme",
   "dependencies": {
-    "bcrypt": "^3.0.3",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",
