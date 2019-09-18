@@ -37,10 +37,14 @@ app.use((req, res, next) => {
 	next();
 });
 
+app.get('/', function (req, res) {
+  res.send('hello world')
+})
+
 app.use('/items', itemRouter);
 app.use('/user', userRouter);
 
 // Start the server
 app.listen(port, () => {
-  console.log(`Express is running on port ${port}`);
+  console.log(`Alimentary-API is running on port ${port}`);
 });
