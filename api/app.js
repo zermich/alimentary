@@ -37,12 +37,12 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.get('/', function (req, res) {
+app.get('/alimentary-api/', function (req, res) {
   res.send('hello world')
 })
 
-app.use('/items', itemRouter);
-app.use('/user', userRouter);
+app.use('/alimentary-api/items', itemRouter);
+app.use('/alimentary-api/user', userRouter);
 
 // Start the server
 app.listen(port, () => {
