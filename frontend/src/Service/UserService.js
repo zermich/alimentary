@@ -2,9 +2,9 @@ import axios from 'axios';
 import localforage from 'localforage';
 
 const localhost = 'http://localhost:4200/user/';
-const server = '';
+const server = 'https://134.209.115.188:4200/alimentary-api/user/';
 
-const address = localhost;
+const address = server;
 
 class UserService {
 
