@@ -7,6 +7,7 @@ import AddItem from './components/AddItem';
 import EditItem from './components/EditItem';
 import Login from './components/User/Login';
 import requireAuthentication from './components/Authenticator';
+import ItemsContainer from './components/ItemsContainer';
 
 ReactDOM.render(
   <Router>
@@ -15,6 +16,7 @@ ReactDOM.render(
       <Route path='/add-item' component={requireAuthentication(AddItem)} />
       <Route path='/edit/:id' component={EditItem} />
       <Route path='/login' component={Login} />
+      <Route path='/all-items' component={ItemsContainer} />
 
     </div>
   </Router>,

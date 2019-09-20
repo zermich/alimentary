@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ItemService from '../Service/ItemService';
 import moment from 'moment';
+import injectSheet from 'react-jss';
+
+import { TableRowStyles } from '../jss/TableRow.styles';
 
 class TableRow extends Component {
 
@@ -33,6 +36,9 @@ class TableRow extends Component {
   }
 
   render() {
+
+    const { classes } = this.props;
+    
     return(
       <tr>
         <td>
@@ -70,4 +76,4 @@ class TableRow extends Component {
   }
 }
 
-export default TableRow;
+export default injectSheet(TableRowStyles)(TableRow);
