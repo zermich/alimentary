@@ -34,7 +34,7 @@ export default function requireAuthentication(Component) {
                         this.checkAuth(this.state.token, result);
                     })
                     .catch ( err => {
-                    console.log(err);
+                    console.error(err);
                     });  
                 });
         }

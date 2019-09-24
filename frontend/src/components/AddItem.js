@@ -35,9 +35,8 @@ class AddItem extends Component {
         this.setState({
           logOut: true
         });
-        console.log('Token removed');
     }).catch( (err) => {
-        console.log(err);
+        console.error(err);
     });
   }
 
@@ -68,7 +67,7 @@ class AddItem extends Component {
 
     // const { classes } = this.props;
     
-    const checkUserLogin = (this.props.user === '' ? <Login /> : `You are logged in as: ${this.props.user}` );
+    const checkUserLogin = (this.props.user === '' ? '' : `You are logged in as: ${this.props.user}` );
 
     return(
       <div className="container">

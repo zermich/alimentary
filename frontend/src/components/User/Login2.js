@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import UserService from '../../Service/UserService';
+import { Redirect } from 'react-router-dom';
 
 
 class Login extends Component {
@@ -9,7 +10,8 @@ class Login extends Component {
         this.state = {
             userValue: "",
             passwordValue: "",
-            loggedIn: false
+            loggedIn: false,
+            redirect: false
         };
         this.addUserService = new UserService();
         this.handleUserInput = this.handleUserInput.bind(this);
@@ -38,12 +40,22 @@ class Login extends Component {
     
       // Sends state data to api to validate login info
       handleSubmit(event) {
+          console.log('login submit clicked');
         event.preventDefault();
         const user = { userValue: this.state.userValue, passwordValue: this.state.passwordValue};
-        this.addUserService.sendLoginData(user, ()=> {this.setState({ loggedIn: true })});
+        this.addUserService.sendLoginData(user, res => {
+            this.setState({
+                redirect: true
+            })
+        });
       }
 
     render() {
+
+        if(this.state.redirect) {
+            return (<Redirect to="/add-item"/>);
+        }
+
         return (
             <div>
                 <p>Log in to add item.</p>

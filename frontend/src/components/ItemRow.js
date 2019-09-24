@@ -21,7 +21,7 @@ class ItemRow extends Component {
       handleDelete(event) {
         event.preventDefault();
         this.addItemService.deleteData(this.props.obj._id, res => {
-          this.props.callbackFromHomepage();
+          this.props.callbackFromItemsContainer();
         });
       }
     

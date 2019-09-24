@@ -15,10 +15,9 @@ class Logout extends Component {
 
         localforage.removeItem('token').then(function() {
             // Run this code once the key has been removed.
-            console.log('Key is cleared!');
         }).catch(function(err) {
             // This code runs if there were any errors
-            console.log(err);
+            console.error(err);
         });
     }
 

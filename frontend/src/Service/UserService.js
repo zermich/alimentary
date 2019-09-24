@@ -25,7 +25,6 @@ class UserService {
                           return localforage.getItem('token');
                       })
                       .then( value => {
-                          console.log('You have successfully logged in');
                           callback();
                       })
                       .catch( err => {});
@@ -34,7 +33,7 @@ class UserService {
               }
             })
             .catch( err => {
-              console.log(err);
+              console.error(err);
             })
     }
 

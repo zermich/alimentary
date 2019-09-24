@@ -15,6 +15,7 @@ class ItemsContainer extends Component {
         items: ''
     }
     this.addItemService = new ItemService();
+    this.updateItemList = this.updateItemList.bind(this);
   }
 
   componentDidMount() {
@@ -23,10 +24,17 @@ class ItemsContainer extends Component {
     });
   }
 
+  // Fetches items from database on props callback from child component
+  updateItemList() {
+    this.addItemService.fetchAllItems( res => {
+      this.setState({ items: res.data });
+    });
+  }
+
   itemRow() {
     if(this.state.items instanceof Array) {
       return this.state.items.map( (object, i) => {
-        return <ItemRow obj={object} key={i} />;
+        return <ItemRow obj={object} key={i} callbackFromItemsContainer={this.updateItemList}/>;
       })
     }
   }
