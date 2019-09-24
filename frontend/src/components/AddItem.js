@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import ItemService from '../Service/ItemService';
-import {withRouter} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 import localforage from 'localforage';
+// import injectSheet from 'react-jss';
 
-import Login from './User/Login';
+import Login from './User/Login2';
+
+// import { AddItemStyles } from '../jss/AddItem.styles';
 
 class AddItem extends Component {
 
@@ -52,7 +55,7 @@ class AddItem extends Component {
     const itemData = { item: this.state.item, user: this.state.user, quantity: this.state.quantity, notes: this.state.notes, category: this.state.category};
     this.addItemService.sendData(itemData, res => {
       this.props.history.push({
-        pathname: '/'
+        pathname: '/all-items'
       });
       this.props.callbackFromHomepage("List updated from AddItem");
     });
@@ -62,9 +65,14 @@ class AddItem extends Component {
     if(this.state.logOut) {
       return ( <Login /> );
     }
+
+    // const { classes } = this.props;
+    
+    const checkUserLogin = (this.props.user === '' ? <Login /> : `You are logged in as: ${this.props.user}` );
+
     return(
       <div className="container">
-        <p>You are logged in as: {this.props.user}</p>
+        <div>{checkUserLogin}</div>
         <button type="submit" onClick={this.handleLogout}>Logout</button>
         <form onSubmit={this.handleSubmit}>
           <label>
@@ -95,6 +103,7 @@ class AddItem extends Component {
             <textarea type="text" name="notes" value={this.state.notes} onChange={this.handleChange} className="form-control" />
           </label><br/>
           <input type="submit" value="Submit" className="btn btn-primary" />
+          <Link to='/all-items' className='btn btn-primary'>Cancel</Link>
         </form>
       </div>
     );

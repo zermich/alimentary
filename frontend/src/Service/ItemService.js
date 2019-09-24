@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const localhost = 'http://localhost:4200/alimentary-api/items/';
-const server = 'https://www.alimentary.cc/alimentary-api/items/';
+// const server = 'https://www.alimentary.cc/alimentary-api/items/';
 
 const address = localhost;
 

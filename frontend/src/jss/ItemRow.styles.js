@@ -10,10 +10,10 @@ export const ItemRowStyles = {
         marginLeft: '.5em'
     },
 
-    itemName: {
-    },
-
-    itemDetails: {
-        
+    itemIcons: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        cursor: 'pointer'
     }
 };

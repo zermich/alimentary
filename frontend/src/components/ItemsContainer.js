@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import ItemService from '../Service/ItemService';
+import { Link } from 'react-router-dom';
 
 import { ItemsContainerStyles } from '../jss/ItemsContainer.styles';
 
@@ -33,10 +34,11 @@ class ItemsContainer extends Component {
 
   render() {
 
-    const { classes } = this.props;
+    // const { classes } = this.props;
     
     return(
       <div>
+          <Link to={'/add-item'}><i className='material-icons'>add_circle</i></Link>
           {this.itemRow()}
       </div>
     );

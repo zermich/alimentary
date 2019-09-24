@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import {Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import localforage from 'localforage';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 
-import Login from './User/Login';
+// import Login from './User/Login';
 
 export default function requireAuthentication(Component) {
     class Authenticator extends React.Component {
@@ -26,12 +26,12 @@ export default function requireAuthentication(Component) {
                     'Content-Type': 'application/json',
                     'x-access-token': result
                     }
-                    axios.post(`http://localhost:4200/user/checkAuth`, null , {headers: headers})
+                    axios.post(`http://localhost:4200/alimentary-api/user/checkAuth`, null , {headers: headers})
                     .then( res => {
-                    this.setState({
-                        token: res.data.allowAccess
-                    });
-                    this.checkAuth(this.state.token, result);
+                        this.setState({
+                            token: res.data.allowAccess
+                        });
+                        this.checkAuth(this.state.token, result);
                     })
                     .catch ( err => {
                     console.log(err);
@@ -50,8 +50,8 @@ export default function requireAuthentication(Component) {
 
         render() {
             if(this.state.redirect) {
-                // return (<Redirect to="/login"/>);
-                return (<Login />);
+                return (<Redirect to="/login"/>);
+                // return (<Login />);
             }
             return (
                 <div>
