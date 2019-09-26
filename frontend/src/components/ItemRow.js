@@ -55,6 +55,7 @@ class ItemRow extends Component {
     const checkboxStatus = this.state.isPurchased ? <i className='material-icons'>check_box</i> : <i className='material-icons'>check_box_outline_blank</i>;
     
     const redirectLink = `/edit/${this.props.obj._id}`;
+    
     if (this.state.redirect) {
       return (<Redirect push to={redirectLink} />);
     }
@@ -106,7 +107,7 @@ class ItemRow extends Component {
                 <div className={classes.userDetails}>
                   {this.props.obj.user} &nbsp;
                   <span className={classes.date}>
-                    {moment(this.props.obj.createdAt).format('MM/DD/YYYY')}
+                    {moment(this.props.obj.updatedAt).format('MM/DD/YYYY')}
                   </span>
                 </div>
                 {/* <div className={classes.itemIcons}>

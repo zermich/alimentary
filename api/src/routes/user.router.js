@@ -51,9 +51,7 @@ router.post('/signin', (req, res, next) => {
                  _id: user._id
                },
                 process.env.JWT_SECRET,
-                {
-                  expiresIn: '2h'
-                });
+                );
                 return res.status(200).json({
                   success: 'Welcome to the JWT Auth',
                   token: JWTToken
