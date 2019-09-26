@@ -42,12 +42,16 @@ class ItemsContainer extends Component {
 
   render() {
 
-    // const { classes } = this.props;
+    const { classes } = this.props;
     
     return(
       <div>
-          <Link to={'/add-item'}><i className='material-icons'>add_circle</i></Link>
-          {this.itemRow()}
+          <h1 className={ classes.siteName }>Alimentary</h1>
+          
+          <Link to={'/add-item'}><span className={classes.addItemBtn}><i className='material-icons'>add_circle</i></span></Link>
+          <div className={classes.itemsListContainer}>
+            {this.itemRow()}
+          </div>
       </div>
     );
   }

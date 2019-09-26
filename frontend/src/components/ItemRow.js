@@ -51,28 +51,32 @@ class ItemRow extends Component {
                     className='checkbox'
             /> */}
             
-        <span className={classes.checkbox} onClick={this.handleCheckboxChange}>
-          {checkboxStatus}
-        </span>
+        <div className={classes.itemHeader}>
+          <span className={classes.checkbox} onClick={this.handleCheckboxChange}>
+            {checkboxStatus}
+          </span>
+          <h2 className={classes.itemName}>{this.props.obj.item}</h2>
+          <p className={classes.itemQuantity}>
+            {this.props.obj.quantity}
+          </p>
+        </div>
+
 
 
         <div className={classes.itemContent}>
-            
-            <h2 className={classes.itemName}>{this.props.obj.item}</h2>
-
-            <p className={classes.itemDetails}>
-                {this.props.obj.quantity}
-                <br/>
+            <div className={classes.itemDetails}>
                 {this.props.obj.notes}
-                <br/>
-                {this.props.obj.user}
-                <br/>
+            </div>
+            <div className={classes.userDetails}>
+              {this.props.obj.user} &nbsp;
+              <span className={classes.date}>
                 {moment(this.props.obj.createdAt).format('MM/DD/YYYY')}
-            </p>
-            <div className={classes.itemIcons}>
+              </span>
+            </div>
+            {/* <div className={classes.itemIcons}>
                 <Link to={'/edit/'+this.props.obj._id}><i className='material-icons'>edit</i></Link>
                 <i className='material-icons' onClick={this.handleDelete}>delete</i>
-            </div>
+            </div> */}
           </div>
       </div>
     );
