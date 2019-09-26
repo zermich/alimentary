@@ -10,7 +10,7 @@ class ItemRow extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          isPurchased: this.props.obj.isPurchased
+          isPurchased: false
         }
         this.addItemService = new ItemService();
         this.handleDelete = this.handleDelete.bind(this);
@@ -27,24 +27,34 @@ class ItemRow extends Component {
     
       // On checkbox click toggles isPurchased value in db
       handleCheckboxChange(event){
-        this.setState({
-          isPurchased: event.target.checked
-        }, () => {
-          this.addItemService.updateToggle(this.state.isPurchased, this.props.obj._id);
-        });
+        // this.setState(prevState => ({
+        //   isPurchased: !prevState.isPurchased
+        // }), () => {
+        //   this.addItemService.updateToggle(this.state.isPurchased, this.props.obj._id);
+        // });
+        this.setState(prevState => ({
+          isPurchased: !prevState.isPurchased
+        }));
       }
 
 
   render() {
 
     const { classes } = this.props;
+
+    const checkboxStatus = this.state.isPurchased ? <i className='material-icons'>check_box</i> : <i className='material-icons'>check_box_outline_blank</i>;
     
     return(
       <div className={classes.itemRowContainer}>
-
-            <input type='checkbox'
+            {/* <input type='checkbox'
                     name='isPurchased'
-            />
+                    className='checkbox'
+            /> */}
+            
+        <span className={classes.checkbox} onClick={this.handleCheckboxChange}>
+          {checkboxStatus}
+        </span>
+
 
         <div className={classes.itemContent}>
             

@@ -15,5 +15,10 @@ export const ItemRowStyles = {
         flexDirection: 'row',
         alignItems: 'center',
         cursor: 'pointer'
-    }
+    },
+
+    checkbox: {
+        cursor: 'pointer',
+    },
+      
 };
