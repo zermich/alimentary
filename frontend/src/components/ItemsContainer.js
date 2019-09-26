@@ -48,7 +48,7 @@ class ItemsContainer extends Component {
       <div>
           <h1 className={ classes.siteName }>Alimentary</h1>
           
-          <Link to={'/add-item'}><span className={classes.addItemBtn}><i className='material-icons'>add_circle</i></span></Link>
+          <Link to={'/add-item'} className={classes.addItemLink}><div className={classes.addItemBtn}>Add Item</div></Link>
           <div className={classes.itemsListContainer}>
             {this.itemRow()}
           </div>

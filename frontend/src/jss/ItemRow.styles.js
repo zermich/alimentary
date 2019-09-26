@@ -1,9 +1,20 @@
 export const ItemRowStyles = {
     itemRowContainer: {
-        marginLeft: '.5em',
+        marginLeft: '1em',
         display: 'flex',
         flexDirection: 'column',
-        marginBottom: '.75em'
+        marginBottom: '.75em',
+        maxWidth: '100vw',
+    },
+
+    itemHeader: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'baseline',
+    },
+
+    checkbox: {
+        cursor: 'pointer',
     },
 
     itemName: {
@@ -42,16 +53,6 @@ export const ItemRowStyles = {
         flexDirection: 'row',
         alignItems: 'center',
         cursor: 'pointer'
-    },
-
-    itemHeader: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'baseline',
-    },
-
-    checkbox: {
-        cursor: 'pointer',
     },
       
 };
