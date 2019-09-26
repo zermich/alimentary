@@ -44,7 +44,7 @@ class EditItem extends Component {
       this.setState({
         item: res.data.item
       }, () => {
-        this.props.history.push('/');
+        this.props.history.push('/all-items');
       });
     })
     .catch( err => {
