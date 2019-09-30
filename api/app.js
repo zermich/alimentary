@@ -7,7 +7,7 @@ var port = 4200;
 
 // Mongoose connection with mlab mongodb
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://zermich:PeterPan01@ds115283.mlab.com:15283/alimentary', { useNewUrlParser: true })
+mongoose.connect('mongodb://zermich:PeterPan01@ds115283.mlab.com:15283/alimentary', { useNewUrlParser: true, useUnifiedTopology: true })
         .then( () => {
           console.log('Start');
         })

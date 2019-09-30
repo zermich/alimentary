@@ -15,6 +15,7 @@ export const ItemRowStyles = {
 
     checkbox: {
         cursor: 'pointer',
+        fontSize: '2.15em',
     },
 
     itemName: {
@@ -24,7 +25,7 @@ export const ItemRowStyles = {
     },
 
     itemQuantity: {
-        margin: 0,
+        margin: '0 0 0 .5em',
     },
 
     itemContent: {
@@ -33,10 +34,19 @@ export const ItemRowStyles = {
         flexDirection: 'row',
     },
 
+    hideItemDetails: {
+        display: 'none',
+    },
+
     itemDetails: {
         alignSelf: 'top',
         borderRight: '.05em solid black',
         paddingRight: '.5em',
+    },
+
+    itemDetailsHidden: {
+        marginLeft: 0,
+        alignSelf: 'baseline',
     },
 
     userDetails: {
