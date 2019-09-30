@@ -80,6 +80,11 @@ itemRouter.route('/item/:id').delete((req, res) => {
 itemRouter.route('/checkout').get((req, res, next) => {
   Item.deleteMany({ isPurchased: true }, (err) => {
     if (err) return handleError(err);
+  }).then( () => {
+    res.json('Purchased items deleted.')
+  })
+    .catch( err => {
+      res.status(400).send('Unable to delete items.');
   });
 });
 

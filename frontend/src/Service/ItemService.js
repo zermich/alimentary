@@ -83,11 +83,11 @@ class ItemService {
     });
   }
 
-  // Removes all items checked isPurchased true from databse
-  checkout() {
+  // Removes all items checked isPurchased: true from databse
+  checkout(callback) {
     return axios.get(address+'checkout')
     .then(res => {
-      console.log('Items deleted.');
+      callback();
     })
     .catch(err => {
       console.error(err);

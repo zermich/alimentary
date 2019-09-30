@@ -42,7 +42,13 @@ class ItemsContainer extends Component {
 
   // Deletes items with isPurchased:true from db
   checkoutItems() {
-    this.addItemService.checkout();
+    this.addItemService.checkout(
+      res => {
+        this.addItemService.fetchAllItems( res => {
+          this.setState({ items: res.data });
+        });
+      }
+    );
   }
 
 
