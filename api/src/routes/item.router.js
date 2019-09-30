@@ -51,7 +51,7 @@ itemRouter.route('/:id').put( (req, res) => {
         item.notes = req.body.notes;
         item.category = req.body.category;
       }
-      if (req.body.isPurchased) {
+      if (req.body.isPurchased || req.body.isPurchased === false) {
         item.isPurchased = req.body.isPurchased;
       }
       item.save().then(item => {

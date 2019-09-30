@@ -12,7 +12,7 @@ class ItemRow extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          isPurchased: false,
+          isPurchased: this.props.obj.isPurchased,
           redirect: false
         }
         this.addItemService = new ItemService();
@@ -37,14 +37,11 @@ class ItemRow extends Component {
     
       // On checkbox click toggles isPurchased value in db
       handleCheckboxChange(event){
-        // this.setState(prevState => ({
-        //   isPurchased: !prevState.isPurchased
-        // }), () => {
-        //   this.addItemService.updateToggle(this.state.isPurchased, this.props.obj._id);
-        // });
         this.setState(prevState => ({
           isPurchased: !prevState.isPurchased
-        }));
+        }), () => {
+          this.addItemService.updateToggle(this.state.isPurchased, this.props.obj._id);
+        });
       }
 
 
@@ -55,7 +52,7 @@ class ItemRow extends Component {
     const checkboxStatus = this.state.isPurchased ? <i className='material-icons'>check_box</i> : <i className='material-icons'>check_box_outline_blank</i>;
     
     const redirectLink = `/edit/${this.props.obj._id}`;
-    
+
     if (this.state.redirect) {
       return (<Redirect push to={redirectLink} />);
     }
