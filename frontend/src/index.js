@@ -12,11 +12,11 @@ import ItemsContainer from './components/ItemsContainer';
 ReactDOM.render(
   <Router>
     <div>
-      <Route exact path='/' component={Homepage} />
+      <Route exact path='/' component={ItemsContainer} />
       <Route path='/add-item' component={requireAuthentication(AddItem)} />
       <Route path='/edit/:id' component={EditItem} />
       <Route path='/login' component={Login} />
-      <Route path='/all-items' component={ItemsContainer} />
+      <Route path='/desktop' component={Homepage} />
 
     </div>
   </Router>,

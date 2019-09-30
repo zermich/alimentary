@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import ItemService from '../Service/ItemService';
 import moment from 'moment';
 import Swipeout from 'rc-swipeout';
@@ -51,7 +51,7 @@ class ItemRow extends Component {
 
     const checkboxStatus = this.state.isPurchased ? <i className='material-icons'>check_box</i> : <i className='material-icons'>check_box_outline_blank</i>;
     
-    const redirectLink = `/edit/${this.props.obj._id}`;
+    const redirectLink = `/item/${this.props.obj._id}`;
 
     if (this.state.redirect) {
       return (<Redirect push to={redirectLink} />);

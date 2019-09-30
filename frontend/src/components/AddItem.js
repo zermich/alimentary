@@ -4,7 +4,7 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 import localforage from 'localforage';
 // import injectSheet from 'react-jss';
 
-import Login from './User/Login2';
+// import Login from './User/Login2';
 
 // import { AddItemStyles } from '../jss/AddItem.styles';
 
@@ -54,7 +54,7 @@ class AddItem extends Component {
     const itemData = { item: this.state.item, user: this.state.user, quantity: this.state.quantity, notes: this.state.notes, category: this.state.category};
     this.addItemService.sendData(itemData, res => {
       this.props.history.push({
-        pathname: '/all-items'
+        pathname: '/'
       });
       this.props.callbackFromHomepage("List updated from AddItem");
     });
@@ -102,7 +102,7 @@ class AddItem extends Component {
             <textarea type="text" name="notes" value={this.state.notes} onChange={this.handleChange} className="form-control" />
           </label><br/>
           <input type="submit" value="Submit" className="btn btn-primary" />
-          <Link to='/all-items' className='btn btn-primary'>Cancel</Link>
+          <Link to='/' className='btn btn-primary'>Cancel</Link>
         </form>
       </div>
     );
