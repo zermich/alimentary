@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const server = 'http://localhost:4200/alimentary-api/items/';
-const server = 'https://www.alimentary.cc/alimentary-api/items/';
+const server = 'http://localhost:4200/alimentary-api/items/';
+// const server = 'https://www.alimentary.cc/alimentary-api/items/';
 
 const address = server;
 
@@ -19,7 +19,7 @@ class ItemService {
   }
 
   fetchItem(id, successCallback){
-    axios.get(address + id)
+    axios.get(address + 'item/'+id)
         .then(res => {
           console.debug('success');
           successCallback(res);
@@ -49,7 +49,7 @@ class ItemService {
 
   // Updates item data
   updateData(data, id) {
-    return axios.put(address+id, {
+    return axios.put(address+'item/'+id, {
       item: data.item,
       user: data.user,
       quantity: data.quantity,
@@ -60,7 +60,7 @@ class ItemService {
 
   // Updates item isPurchased value
   updateToggle(data, id) {
-    axios.put(address+id, {
+    axios.put(address+'item/'+id, {
       isPurchased: data
     })
           .then( res => {
@@ -73,7 +73,7 @@ class ItemService {
 
   // Removes item from database
   deleteData(id, successCallback) {
-    return axios.delete(address+id)
+    return axios.delete(address+'item/'+id)
     .then(res => {
       console.debug('success');
       successCallback(res);
@@ -82,6 +82,19 @@ class ItemService {
       console.error(err);
     });
   }
+
+  // Removes all items checked isPurchased true from databse
+  checkout() {
+    return axios.get(address+'checkout')
+    .then(res => {
+      console.log('Items deleted.');
+    })
+    .catch(err => {
+      console.error(err);
+    });
+  }
+
+
 }
 
 export default ItemService;

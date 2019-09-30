@@ -16,6 +16,7 @@ class ItemsContainer extends Component {
     }
     this.addItemService = new ItemService();
     this.updateItemList = this.updateItemList.bind(this);
+    this.checkoutItems = this.checkoutItems.bind(this);
   }
 
   componentDidMount() {
@@ -39,6 +40,11 @@ class ItemsContainer extends Component {
     }
   }
 
+  // Deletes items with isPurchased:true from db
+  checkoutItems() {
+    this.addItemService.checkout();
+  }
+
 
   render() {
 
@@ -48,10 +54,11 @@ class ItemsContainer extends Component {
       <div>
           <h1 className={ classes.siteName }>Alimentary</h1>
           
-          <Link to={'/add-item'} className={classes.addItemLink}><div className={classes.addItemBtn}>Add Item</div></Link>
+          <Link to={'/add-item'}><div className={classes.addItemBtn}>Add Item</div></Link>
           <div className={classes.itemsListContainer}>
             {this.itemRow()}
           </div>
+          <div className={classes.addItemBtn} onClick={this.checkoutItems}>Checkout</div>
       </div>
     );
   }

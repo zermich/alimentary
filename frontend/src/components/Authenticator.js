@@ -26,7 +26,7 @@ export default function requireAuthentication(Component) {
                     'Content-Type': 'application/json',
                     'x-access-token': result
                     }
-                    axios.post(`http://localhost:4200/alimentary-api/user/checkAuth`, null , {headers: headers})
+                    axios.post(`https://www.alimentary.cc/alimentary-api/user/checkAuth`, null , {headers: headers})
                     .then( res => {
                         this.setState({
                             token: res.data.allowAccess

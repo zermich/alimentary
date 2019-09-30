@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ItemService from '../Service/ItemService';
-import {withRouter, Link} from 'react-router-dom';
+import { withRouter, Link, Redirect } from 'react-router-dom';
 import localforage from 'localforage';
 // import injectSheet from 'react-jss';
 
@@ -62,7 +62,7 @@ class AddItem extends Component {
   
   render() {
     if(this.state.logOut) {
-      return ( <Login /> );
+      return (<Redirect to="/login"/>);
     }
 
     // const { classes } = this.props;

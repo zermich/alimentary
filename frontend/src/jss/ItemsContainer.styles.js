@@ -19,13 +19,11 @@ export const ItemsContainerStyles = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-    },
-
-    addItemLink: {
-        color: 'white',
         textTransform: 'uppercase',
         letterSpacing: '.15em',
+        cursor: 'pointer',
     },
+
 
     itemsListContainer: {
         marginTop: '2em',

@@ -30,7 +30,7 @@ itemRouter.route('/').get( (req, res) => {
 });
 
 // Defined edit route
-itemRouter.route('/:id').get( (req, res) => {
+itemRouter.route('/item/:id').get( (req, res) => {
   var id = req.params.id;
   Item.findById(id, (err, item) => {
     res.json(item);
@@ -38,7 +38,7 @@ itemRouter.route('/:id').get( (req, res) => {
 });
 
 // Defined update route
-itemRouter.route('/:id').put( (req, res) => {
+itemRouter.route('/item/:id').put( (req, res) => {
   Item.findById(req.params.id, (err, item) => {
     if (!item) {
       return next(new Error('Could not load Document'));
@@ -65,7 +65,7 @@ itemRouter.route('/:id').put( (req, res) => {
 });
 
 // Defined delete | remove | destroy route
-itemRouter.route('/:id').delete((req, res) => {
+itemRouter.route('/item/:id').delete((req, res) => {
   Item.findOneAndDelete({_id: req.params.id},
   (err,item) => {
     if(err) {
@@ -76,5 +76,13 @@ itemRouter.route('/:id').delete((req, res) => {
     }
   });
 });
+
+itemRouter.route('/checkout').get((req, res, next) => {
+  Item.deleteMany({ isPurchased: true }, (err) => {
+    if (err) return handleError(err);
+  });
+});
+
+
 
 module.exports = itemRouter;
