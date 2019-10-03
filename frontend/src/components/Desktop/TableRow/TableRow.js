@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import ItemService from '../Service/ItemService';
+import ItemService from '../../../Service/ItemService';
 import moment from 'moment';
 import injectSheet from 'react-jss';
 
-import { TableRowStyles } from '../jss/TableRow.styles';
+import { TableRowStyles } from './TableRow.styles';
 
 class TableRow extends Component {
 

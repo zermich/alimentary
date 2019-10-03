@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
-import ItemService from '../Service/ItemService';
+import ItemService from '../../Service/ItemService';
 import { Link } from 'react-router-dom';
 
-import { ItemsContainerStyles } from '../jss/ItemsContainer.styles';
+import { ItemsContainerStyles } from './ItemsContainer.styles';
 
-import ItemRow from './ItemRow';
+import ItemRow from '../ItemRow/ItemRow';
 
 class ItemsContainer extends Component {
 

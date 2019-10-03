@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Homepage from './components/Homepage';
-import AddItem from './components/AddItem';
-import EditItem from './components/EditItem';
+import Homepage from './components/Desktop/Homepage';
+import AddItem from './components/AddItem/AddItem';
+import EditItem from './components/EditItem/EditItem';
 import Login from './components/User/Login2';
 import requireAuthentication from './components/Authenticator';
-import ItemsContainer from './components/ItemsContainer';
+import ItemsContainer from './components/ItemsContainer/ItemsContainer';
 
 ReactDOM.render(
   <Router>

@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import ItemService from '../Service/ItemService';
+import ItemService from '../../Service/ItemService';
 import { withRouter } from 'react-router-dom';
 
-import TableRow from './TableRow';
-import requireAuthentication from './Authenticator';
-import AddItem from './AddItem';
+import TableRow from './TableRow/TableRow';
+import requireAuthentication from '../Authenticator';
+import AddItem from '../AddItem/AddItem';
 
 // Runs the function requireAuthentication from Authenticator, asking for login info and validating before displaying AddItem component
 const ItemAction = requireAuthentication(AddItem);
 
-class HomeContainer extends Component {
+class Homepage extends Component {
 
   constructor(props) {
     super(props);
@@ -77,4 +77,4 @@ class HomeContainer extends Component {
 
 }
 
-export default withRouter(HomeContainer);
+export default withRouter(Homepage);

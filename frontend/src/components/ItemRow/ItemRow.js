@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import { Redirect } from 'react-router-dom';
-import ItemService from '../Service/ItemService';
+import ItemService from '../../Service/ItemService';
 import moment from 'moment';
 import Swipeout from 'rc-swipeout';
 import 'rc-swipeout/assets/index.css';
 
-import { ItemRowStyles } from '../jss/ItemRow.styles';
+import { ItemRowStyles } from './ItemRow.styles';
 
 class ItemRow extends Component {
     constructor(props) {
