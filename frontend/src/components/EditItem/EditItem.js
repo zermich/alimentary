@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ItemService from '../../Service/ItemService';
+import { Link } from 'react-router-dom';
 
 class EditItem extends Component {
 
@@ -84,6 +85,7 @@ class EditItem extends Component {
             <textarea type="text" name="notes" value={this.state.notes} onChange={this.handleChange} className="form-control" />
           </label><br/>
           <input type='submit' value='Update' className='btn btn-primary' />
+          <Link to='/' className='btn btn-primary'>Cancel</Link>
         </form>
       </div>
     );
