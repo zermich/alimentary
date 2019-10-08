@@ -74,7 +74,7 @@ class AddItem extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             Add Item:
-            <input type="text" name="item" value={this.state.item} onChange={this.handleChange} className="form-control" />
+            <input autoFocus type="text" name="item" value={this.state.item} onChange={this.handleChange} className="form-control" />
           </label><br/>
           <label>
             Category:&nbsp;
