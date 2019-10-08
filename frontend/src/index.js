@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import registerServiceWorker from './registerServiceWorker';
 
 import Homepage from './components/Desktop/Homepage';
 import AddItem from './components/AddItem/AddItem';
@@ -21,3 +22,5 @@ ReactDOM.render(
     </div>
   </Router>,
   document.getElementById('root'));
+
+  registerServiceWorker();
