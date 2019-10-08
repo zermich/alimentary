@@ -65,5 +65,15 @@ export const ItemRowStyles = {
         alignItems: 'center',
         cursor: 'pointer'
     },
-      
+
+    desktopButtons: {
+        display: 'none',     
+    },
+
+    '@media (min-width: 800px)': {
+        desktopButtons: {
+            display: 'inline-block',
+        }
+    },
+ 
 };

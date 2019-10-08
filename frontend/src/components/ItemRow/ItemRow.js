@@ -59,45 +59,45 @@ class ItemRow extends Component {
 
     return(
       
-      <div className={classes.itemRowContainer} onClick={this.handleCheckboxChange}>
+      <div className={classes.itemRowContainer}>
             {/* <input type='checkbox'
                     name='isPurchased'
                     className='checkbox'
             /> */}
+          <div onClick={this.handleCheckboxChange}>
+            <Swipeout
+              left={[
+                {
+                  text: 'edit',
+                  onPress:() => this.redirectToEditItem(),
+                  style: { backgroundColor: '#47744A', color: 'white' },
+                  className: `custom-class-1`
+                }
+              ]}
+              right={[
+                {
+                  text: 'delete',
+                  onPress:() => this.handleDelete(),
+                  style: { backgroundColor: '#DB6865', color: 'white' },
+                  className: `custom-class-1`
+                }
+              ]}
+              onOpen={() => console.log('open')}
+              onClose={() => console.log('close')}
+            >
+                <div className={classes.itemHeader}>
+                  <span className={classes.checkbox}>
+                    {checkboxStatus}
+                  </span>
+                  <h2 className={classes.itemName}>{this.props.obj.item}</h2>
+                </div>
 
-          <Swipeout
-            left={[
-              {
-                text: 'edit',
-                onPress:() => this.redirectToEditItem(),
-                style: { backgroundColor: '#47744A', color: 'white' },
-                className: `custom-class-1`
-              }
-            ]}
-            right={[
-              {
-                text: 'delete',
-                onPress:() => this.handleDelete(),
-                style: { backgroundColor: '#DB6865', color: 'white' },
-                className: `custom-class-1`
-              }
-            ]}
-            onOpen={() => console.log('open')}
-            onClose={() => console.log('close')}
-          >
-              <div className={classes.itemHeader}>
-                <span className={classes.checkbox}>
-                  {checkboxStatus}
-                </span>
-                <h2 className={classes.itemName}>{this.props.obj.item}</h2>
-              </div>
 
+                <p className={classes.itemQuantity}>
+                      {this.props.obj.quantity}
+                </p>
 
-              <p className={classes.itemQuantity}>
-                    {this.props.obj.quantity}
-              </p>
-
-              <div className={classes.itemContent}>
+                <div className={classes.itemContent}>
                   <div className={this.props.obj.notes === '' ? classes.hideItemDetails : classes.itemDetails}>
                       {this.props.obj.notes}
                   </div>
@@ -108,9 +108,16 @@ class ItemRow extends Component {
                     </span>
                   </div>
                 </div>
-          </Swipeout>
- 
+
+                
+            </Swipeout>
+          </div>
+          <div className={ classes.desktopButtons}>
+            <i className={'material-icons-two-tone'} onClick={this.redirectToEditItem}>edit</i>
+            <i className='material-icons-two-tone' onClick={this.handleDelete}>delete</i>
+          </div>
       </div>
+      
     );
   }
 }
