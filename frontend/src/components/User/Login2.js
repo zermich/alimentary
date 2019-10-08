@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import UserService from '../../Service/UserService';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 
 class Login extends Component {
@@ -69,6 +69,7 @@ class Login extends Component {
                         <input type="password" name="password" value={this.state.passwordValue} onChange={ e => this.handlePasswordInput(e) } />
                     </label><br/>
                     <button type="submit" onClick={this.handleSubmit}>Submit</button>
+                    <Link to="/"><button onClick={this.handleCancel}>Cancel</button></Link>
                 </form>
             </div>
         )
