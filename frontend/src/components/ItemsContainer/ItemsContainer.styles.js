@@ -3,6 +3,9 @@ export const ItemsContainerStyles = {
     siteName: {
         fontFamily: 'Josefin Sans',
         fontSize: '3em',
+        textTransform: 'uppercase',
+        letterSpacing: '.15em',
+        paddingTop: '.4em',
         border: '.05em solid black',
         textAlign: 'center',
         margin: '.5em',
