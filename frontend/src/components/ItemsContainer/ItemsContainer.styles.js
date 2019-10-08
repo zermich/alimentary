@@ -2,14 +2,13 @@ export const ItemsContainerStyles = {
 
     siteName: {
         fontFamily: 'Josefin Sans',
-        fontSize: '3em',
+        fontSize: '2em',
         textTransform: 'uppercase',
-        letterSpacing: '.15em',
-        paddingTop: '.4em',
+        letterSpacing: '.5em',
+        padding: '.8em 0 .5em 0',
         border: '.05em solid black',
         textAlign: 'center',
         margin: '.5em',
-        padding: '.15em',
     },
 
     addItemBtn: {
