@@ -5,6 +5,7 @@ export const ItemRowStyles = {
         flexDirection: 'column',
         marginBottom: '.75em',
         maxWidth: '100vw',
+        cursor: 'pointer',
     },
 
     itemHeader: {

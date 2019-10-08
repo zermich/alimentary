@@ -59,7 +59,7 @@ class ItemRow extends Component {
 
     return(
       
-      <div className={classes.itemRowContainer}>
+      <div className={classes.itemRowContainer} onClick={this.handleCheckboxChange}>
             {/* <input type='checkbox'
                     name='isPurchased'
                     className='checkbox'
@@ -85,29 +85,29 @@ class ItemRow extends Component {
             onOpen={() => console.log('open')}
             onClose={() => console.log('close')}
           >
-            <div className={classes.itemHeader}>
-              <span className={classes.checkbox} onClick={this.handleCheckboxChange}>
-                {checkboxStatus}
-              </span>
-              <h2 className={classes.itemName}>{this.props.obj.item}</h2>
-            </div>
-
-
-            <p className={classes.itemQuantity}>
-                  {this.props.obj.quantity}
-            </p>
-
-            <div className={classes.itemContent}>
-                <div className={this.props.obj.notes === '' ? classes.hideItemDetails : classes.itemDetails}>
-                    {this.props.obj.notes}
-                </div>
-                <div className={this.props.obj.notes === '' ? classes.itemDetailsHidden : classes.userDetails}>
-                  {this.props.obj.user} &nbsp;
-                  <span className={classes.date}>
-                    {moment(this.props.obj.updatedAt).format('l')}
-                  </span>
-                </div>
+              <div className={classes.itemHeader}>
+                <span className={classes.checkbox}>
+                  {checkboxStatus}
+                </span>
+                <h2 className={classes.itemName}>{this.props.obj.item}</h2>
               </div>
+
+
+              <p className={classes.itemQuantity}>
+                    {this.props.obj.quantity}
+              </p>
+
+              <div className={classes.itemContent}>
+                  <div className={this.props.obj.notes === '' ? classes.hideItemDetails : classes.itemDetails}>
+                      {this.props.obj.notes}
+                  </div>
+                  <div className={this.props.obj.notes === '' ? classes.itemDetailsHidden : classes.userDetails}>
+                    {this.props.obj.user} &nbsp;
+                    <span className={classes.date}>
+                      {moment(this.props.obj.updatedAt).format('l')}
+                    </span>
+                  </div>
+                </div>
           </Swipeout>
  
       </div>
