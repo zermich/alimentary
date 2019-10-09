@@ -9,6 +9,7 @@ export const ItemsContainerStyles = {
         border: '.05em solid black',
         textAlign: 'center',
         margin: '.5em',
+        maxWidth: '100vw',
     },
 
     addItemBtn: {
