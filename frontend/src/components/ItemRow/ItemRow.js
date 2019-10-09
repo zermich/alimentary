@@ -60,11 +60,6 @@ class ItemRow extends Component {
     return(
       
       <div className={classes.itemRowContainer}>
-            {/* <input type='checkbox'
-                    name='isPurchased'
-                    className='checkbox'
-            /> */}
-          <div onClick={this.handleCheckboxChange}>
             <Swipeout
               left={[
                 {
@@ -85,6 +80,7 @@ class ItemRow extends Component {
               onOpen={() => console.log('open')}
               onClose={() => console.log('close')}
             >
+              <div onClick={this.handleCheckboxChange}>
                 <div className={classes.itemHeader}>
                   <span className={classes.checkbox}>
                     {checkboxStatus}
@@ -108,15 +104,14 @@ class ItemRow extends Component {
                     </span>
                   </div>
                 </div>
-
-                
+              </div>
             </Swipeout>
+            <div className={ classes.desktopButtons}>
+              <i className={'material-icons-two-tone'} onClick={this.redirectToEditItem}>edit</i>
+              <i className='material-icons-two-tone' onClick={this.handleDelete}>delete</i>
+            </div>
           </div>
-          <div className={ classes.desktopButtons}>
-            <i className={'material-icons-two-tone'} onClick={this.redirectToEditItem}>edit</i>
-            <i className='material-icons-two-tone' onClick={this.handleDelete}>delete</i>
-          </div>
-      </div>
+          
       
     );
   }
