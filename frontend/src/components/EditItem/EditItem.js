@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import injectSheet from 'react-jss';
 import ItemService from '../../Service/ItemService';
 import { Link } from 'react-router-dom';
+
+import { EditItemStyles } from './EditItem.styles';
 
 class EditItem extends Component {
 
@@ -54,16 +57,20 @@ class EditItem extends Component {
   }
 
   render() {
+
+    const { classes } = this.props;
+
     return (
-      <div className='container'>
+      <div className={ classes.editItemContainer }>
         <form onSubmit={this.handleSubmit}>
-          <label>
+          <label className={ classes.labels }>
             Edit Item:
             <input type='text' name='item' value={this.state.item} onChange={this.handleChange} className='form-control' />
           </label><br/>
-          <label>
+          <label className={ classes.labels }>
             Category:&nbsp;
-            <select name='category' value={this.state.category} onChange={this.handleChange}>
+          </label><br />
+          <select name='category' value={this.state.category} onChange={this.handleChange} >
               <option value='other'>Other</option>
               <option value='bakery'>Bakery</option>
               <option value='baking'>Baking</option>
@@ -74,18 +81,20 @@ class EditItem extends Component {
               <option value='home'>Home</option>
               <option value='meat'>Meat</option>
               <option value='produce'>Produce</option>
-            </select>
-          </label><br />
-          <label>
+            </select><br /><br />
+          <label className={ classes.labels }>
             Quantity:
             <input type="text" name="quantity" value={this.state.quantity} onChange={this.handleChange} className="form-control" />
           </label><br/>
-          <label>
+          <label className={ classes.labels }>
             Notes:
             <textarea type="text" name="notes" value={this.state.notes} onChange={this.handleChange} className="form-control" />
           </label><br/>
-          <input type='submit' value='Update' className='btn btn-primary' />
-          <Link to='/' className='btn btn-primary'>Cancel</Link>
+          <div className={ classes.btnContainer }>
+            <input type='submit' value='Update' className={ classes.btn } />
+            <Link to='/' className={ `${classes.btn} ${classes.btnLink}` }>Cancel</Link>
+          </div>
+
         </form>
       </div>
     );
@@ -93,4 +102,4 @@ class EditItem extends Component {
 
 }
 
-export default EditItem;
+export default injectSheet(EditItemStyles)(EditItem);
