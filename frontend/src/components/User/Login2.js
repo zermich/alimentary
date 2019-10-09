@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import UserService from '../../Service/UserService';
 import { Redirect, Link } from 'react-router-dom';
+import injectSheet from 'react-jss';
+
+import { EditItemStyles } from '../EditItem/EditItem.styles';
 
 
 class Login extends Component {
@@ -56,20 +59,24 @@ class Login extends Component {
             return (<Redirect to="/add-item"/>);
         }
 
+        const { classes } = this.props;
+
         return (
-            <div>
+            <div className={ classes.editItemContainer }>
                 <p>Log in to add item.</p>
                 <form>
-                    <label>
+                    <label className={ classes.labels }>
                         Username:
-                        <input type="text" name="user" value={this.state.userValue} onChange={ e => this.handleUserInput(e) } autoCapitalize='none' />
+                        <input type="text" name="user" value={this.state.userValue} onChange={ e => this.handleUserInput(e) } autoCapitalize='none' className={ `form-control ${classes.noZoom}` } />
                     </label><br/>
-                    <label>
+                    <label className={ classes.labels }>
                         Password:
-                        <input type="password" name="password" value={this.state.passwordValue} onChange={ e => this.handlePasswordInput(e) } />
+                        <input type="password" name="password" value={this.state.passwordValue} onChange={ e => this.handlePasswordInput(e) } className={ `form-control ${classes.noZoom}` } />
                     </label><br/>
-                    <button type="submit" onClick={this.handleSubmit}>Submit</button>
-                    <Link to="/"><button onClick={this.handleCancel}>Cancel</button></Link>
+                    <div className={ classes.btnContainer }>
+                        <button type="submit" onClick={this.handleSubmit} className={ `${classes.btn} ${classes.noZoom}` }>Submit</button>
+                        <Link to="/"><button onClick={this.handleCancel} className={ `${classes.btn} ${classes.btnLink}` }>Cancel</button></Link>
+                    </div>
                 </form>
             </div>
         )
@@ -77,4 +84,4 @@ class Login extends Component {
 
 }
 
-export default Login;
+export default injectSheet(EditItemStyles)(Login);
