@@ -62,7 +62,7 @@ class Login extends Component {
                 <form>
                     <label>
                         Username:
-                        <input type="text" name="user" value={this.state.userValue} onChange={ e => this.handleUserInput(e) } />
+                        <input type="text" name="user" value={this.state.userValue} onChange={ e => this.handleUserInput(e) } autoCapitalize='none' />
                     </label><br/>
                     <label>
                         Password:

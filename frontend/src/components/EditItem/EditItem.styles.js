@@ -17,6 +17,10 @@ export const EditItemStyles = {
         fontSize: '1em',
     },
 
+    noZoom: {
+        fontSize: '100%',
+    },
+
     btnContainer: {
         display: 'flex',
         flexDirection: 'row',

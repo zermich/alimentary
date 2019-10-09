@@ -65,12 +65,12 @@ class EditItem extends Component {
         <form onSubmit={this.handleSubmit}>
           <label className={ classes.labels }>
             Edit Item:
-            <input type='text' name='item' value={this.state.item} onChange={this.handleChange} className='form-control' />
+            <input type='text' name='item' value={this.state.item} onChange={this.handleChange} className={ `form-control ${classes.noZoom}` } />
           </label><br/>
           <label className={ classes.labels }>
             Category:&nbsp;
           </label><br />
-          <select name='category' value={this.state.category} onChange={this.handleChange} >
+          <select name='category' value={this.state.category} onChange={this.handleChange} className={ classes.noZoom } >
               <option value='other'>Other</option>
               <option value='bakery'>Bakery</option>
               <option value='baking'>Baking</option>
@@ -84,14 +84,14 @@ class EditItem extends Component {
             </select><br /><br />
           <label className={ classes.labels }>
             Quantity:
-            <input type="text" name="quantity" value={this.state.quantity} onChange={this.handleChange} className="form-control" />
+            <input type="text" name="quantity" value={this.state.quantity} onChange={this.handleChange} className={ `form-control ${classes.noZoom}` } />
           </label><br/>
           <label className={ classes.labels }>
             Notes:
-            <textarea type="text" name="notes" value={this.state.notes} onChange={this.handleChange} className="form-control" />
+            <textarea type="text" name="notes" value={this.state.notes} onChange={this.handleChange} className={ `form-control ${classes.noZoom}` } />
           </label><br/>
           <div className={ classes.btnContainer }>
-            <input type='submit' value='Update' className={ classes.btn } />
+            <input type='submit' value='Update' className={ `${classes.btn} ${classes.noZoom}` } />
             <Link to='/' className={ `${classes.btn} ${classes.btnLink}` }>Cancel</Link>
           </div>
 
