@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import ItemService from '../../Service/ItemService';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import localforage from 'localforage';
 
 import { EditItemStyles } from './EditItem.styles';
 
@@ -13,11 +14,27 @@ class EditItem extends Component {
       item: '',
       category: '',
       quantity: '',
-      notes: ''
+      notes: '',
+      user: '',
+      logOut: false
     };
     this.addItemService = new ItemService();
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
+   // Removes token from local storage and sets this.state.logOut to true
+   handleLogout(e) {
+    e.preventDefault();
+
+    localforage.removeItem('token').then( () => {
+        this.setState({
+          logOut: true
+        });
+    }).catch( (err) => {
+        console.error(err);
+    });
   }
 
   // Fetches item data and sets state/fills in form
@@ -57,11 +74,18 @@ class EditItem extends Component {
   }
 
   render() {
+    if(this.state.logOut) {
+      return (<Redirect to="/login"/>);
+    }
 
     const { classes } = this.props;
 
+    const checkUserLogin = (this.props.user === '' ? '' : `You are logged in as: ${this.props.user}` );
+
     return (
       <div className={ classes.editItemContainer }>
+        <div>{checkUserLogin}</div>
+        <button type="submit" onClick={this.handleLogout} className={ classes.btn }>Logout</button><br/><br/>
         <form onSubmit={this.handleSubmit}>
           <label className={ classes.labels }>
             Edit Item:

@@ -15,7 +15,7 @@ ReactDOM.render(
     <div>
       <Route exact path='/' component={ItemsContainer} />
       <Route path='/add-item' component={requireAuthentication(AddItem)} />
-      <Route path='/edit/:id' component={EditItem} />
+      <Route path='/edit/:id' component={requireAuthentication(EditItem)} />
       <Route path='/login' component={Login} />
       <Route path='/desktop' component={Homepage} />
 
