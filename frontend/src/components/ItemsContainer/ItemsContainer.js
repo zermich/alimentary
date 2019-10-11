@@ -34,9 +34,73 @@ class ItemsContainer extends Component {
 
   itemRow() {
     if(this.state.items instanceof Array) {
-      return this.state.items.map( (object, i) => {
-        return <ItemRow obj={object} key={i} callbackFromItemsContainer={this.updateItemList}/>;
+
+      const categories = [
+        {
+          name: 'other',
+          items: []
+        },
+        {
+          name: 'bakery',
+          items: []
+        },
+        {
+          name: 'baking',
+          items: []
+        },
+        {
+          name: 'condiments',
+          items: []
+        },
+        {
+          name: 'dairy',
+          items: []
+        },
+        {
+          name: 'deli',
+          items: []
+        },
+        {
+          name: 'frozen',
+          items: []
+        },
+        {
+          name: 'home',
+          items: []
+        },
+        {
+          name: 'meat',
+          items: []
+        },
+        {
+          name: 'produce',
+          items: []
+        },
+      ]
+
+      this.state.items.forEach( (object, i) => {
+        for(let i=0; i < categories.length; i++) {
+          if (object.category === categories[i].name) {
+            categories[i].items.push(object)
+          }
+        }
       })
+
+
+      return categories.map( (cat, i) => {
+        
+        if (cat.items.length !== 0){
+          return cat.items.map( object => {
+            console.log(object);
+            return <ItemRow obj={object} key={object._id} callbackFromItemsContainer={this.updateItemList}/>
+          })
+          
+        }
+      })
+
+      // return this.state.items.map( (object, i) => {
+      //   return <ItemRow obj={object} key={i} callbackFromItemsContainer={this.updateItemList}/>;
+      // })
     }
   }
 
