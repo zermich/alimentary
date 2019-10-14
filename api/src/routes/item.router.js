@@ -29,6 +29,26 @@ itemRouter.route('/').get( (req, res) => {
   });
 });
 
+
+// TESTING AGGREGATION
+itemRouter.route('/aggregate').get( (req, res) => {
+  Item.aggregate(
+    [
+      { $group: {
+        _id: '$category',
+        groupItems: {
+          $push: '$$ROOT'
+        }
+      }}
+    ], (err, result) => {
+      if (err) {
+          next(err);
+      } else {
+          res.json(result);
+      }
+  });
+});
+
 // Defined edit route
 itemRouter.route('/item/:id').get( (req, res) => {
   var id = req.params.id;

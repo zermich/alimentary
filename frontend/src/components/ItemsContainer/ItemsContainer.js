@@ -20,24 +20,40 @@ class ItemsContainer extends Component {
   }
 
   componentDidMount() {
-    this.addItemService.fetchAllItems( res => {
+    this.addItemService.fetchAndCategorizeItems( res => {
       this.setState({ items: res.data });
     });
   }
 
   // Fetches items from database on props callback from child component
   updateItemList() {
-    this.addItemService.fetchAllItems( res => {
+    this.addItemService.fetchAndCategorizeItems( res => {
       this.setState({ items: res.data });
     });
   }
 
+  //Populates Categories & Items from database
   itemRow() {
-    if(this.state.items instanceof Array) {
-      return this.state.items.map( (object, i) => {
-        return <ItemRow obj={object} key={i} callbackFromItemsContainer={this.updateItemList}/>;
-      })
+    const categoryHeaderStyles = {
+      fontFamily: 'Josefin Sans',
+      fontSize: '2em',
+      marginLeft: '.25em',
+      marginBottom: '.5em',
+      borderBottom: '.05em solid black',
+      textTransform: 'uppercase',
     }
+
+    const allItems = []
+    for(let i=0; i < this.state.items.length; i++){
+      let categoryName = this.state.items[i];
+      allItems.push(<div style={categoryHeaderStyles} key={i}>{categoryName._id}</div>)
+      allItems.push(
+        categoryName.groupItems.map( (object, i) => {
+            return <ItemRow obj={object} key={i} callbackFromItemsContainer={this.updateItemList}/>;
+        })
+      )
+    }
+    return allItems;
   }
 
   // Deletes items with isPurchased:true from db

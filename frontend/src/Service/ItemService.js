@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const server = 'http://localhost:4200/alimentary-api/items/';
-const server = 'https://www.alimentary.cc/alimentary-api/items/';
+const server = 'http://localhost:4200/alimentary-api/items/';
+// const server = 'https://www.alimentary.cc/alimentary-api/items/';
 
 const address = server;
 
@@ -9,6 +9,17 @@ class ItemService {
 
   fetchAllItems(successCallback){
     axios.get(address)
+        .then(res => {
+          console.debug('success');
+          successCallback(res);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+  }
+
+  fetchAndCategorizeItems(successCallback){
+    axios.get(address + 'aggregate')
         .then(res => {
           console.debug('success');
           successCallback(res);
