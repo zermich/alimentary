@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ItemService from '../../Service/ItemService';
-import { withRouter, Link, Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import localforage from 'localforage';
 import injectSheet from 'react-jss';
 
@@ -109,5 +109,4 @@ class AddItem extends Component {
   }
 }
 
-// export default withRouter(AddItem);
 export default injectSheet(EditItemStyles)(AddItem);
