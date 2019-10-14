@@ -33,20 +33,12 @@ class ItemsContainer extends Component {
   }
 
   //Populates Categories & Items from database
-  itemRow() {
-    const categoryHeaderStyles = {
-      fontFamily: 'Josefin Sans',
-      fontSize: '2em',
-      marginLeft: '.25em',
-      marginBottom: '.5em',
-      borderBottom: '.05em solid black',
-      textTransform: 'uppercase',
-    }
-
+  itemRow( styleName ) { 
+    console.log(styleName);
     const allItems = []
     for(let i=0; i < this.state.items.length; i++){
       let categoryName = this.state.items[i];
-      allItems.push(<div style={categoryHeaderStyles} key={i}>{categoryName._id}</div>)
+      allItems.push(<div className={styleName} key={i}>{categoryName._id}</div>)
       allItems.push(
         categoryName.groupItems.map( (object, i) => {
             return <ItemRow obj={object} key={i} callbackFromItemsContainer={this.updateItemList}/>;
@@ -78,7 +70,7 @@ class ItemsContainer extends Component {
           
           <Link to={'/add-item'}><div className={classes.addItemBtn}>Add Item</div></Link>
           <div className={classes.itemsListContainer}>
-            {this.itemRow()}
+            {this.itemRow( classes.categoryHeader)}
           </div>
           <div className={classes.addItemBtn} onClick={this.checkoutItems}>Checkout</div>
       </div>

@@ -28,6 +28,16 @@ export const ItemsContainerStyles = {
     },
 
 
+    categoryHeader: {
+        fontFamily: 'Josefin Sans',
+        fontSize: '2em',
+        marginLeft: '.25em',
+        marginBottom: '.5em',
+        borderBottom: '.05em solid black',
+        textTransform: 'uppercase',
+    },
+
+
     itemsListContainer: {
         marginTop: '2em',
     },
