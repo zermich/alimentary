@@ -1,15 +1,18 @@
 export const ItemsContainerStyles = {
 
+    siteNameContainer: {
+        border: '.05em solid black',
+        maxWidth: '100vw',
+        margin: '.5em',
+    },
+
     siteName: {
         fontFamily: 'Josefin Sans',
         fontSize: '1.8em',
         textTransform: 'uppercase',
         letterSpacing: '.5em',
-        padding: '.8em 0 .5em 0',
-        border: '.05em solid black',
+        marginRight: '-.5em',
         textAlign: 'center',
-        margin: '.5em',
-        maxWidth: '100vw',
     },
 
     addItemBtn: {

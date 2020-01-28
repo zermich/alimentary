@@ -66,7 +66,9 @@ class ItemsContainer extends Component {
     
     return(
       <div>
-          <h1 className={ classes.siteName }>Alimentary</h1>
+          <div className={ classes.siteNameContainer}>
+            <h1 className={ classes.siteName }>Alimentary</h1>
+          </div>
           
           <Link to={'/add-item'}><div className={classes.addItemBtn}>Add Item</div></Link>
           <div className={classes.itemsListContainer}>
