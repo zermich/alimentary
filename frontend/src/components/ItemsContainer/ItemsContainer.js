@@ -52,7 +52,7 @@ class ItemsContainer extends Component {
   checkoutItems() {
     this.addItemService.checkout(
       res => {
-        this.addItemService.fetchAllItems( res => {
+        this.addItemService.fetchAndCategorizeItems( res => {
           this.setState({ items: res.data });
         });
       }
