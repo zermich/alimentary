@@ -49,12 +49,17 @@ class AddItem extends Component {
   // Sends updated item data from state to db
   handleSubmit(event) {
     event.preventDefault();
-    const itemData = { item: this.state.item, user: this.state.user, quantity: this.state.quantity, notes: this.state.notes, category: this.state.category};
+    const capitalizeText = (input) => {
+      return input.replace(/^(.)|\s(.)/g, $1 => {return $1.toUpperCase()});
+    }
+    const capitalizeFirstLetter = (input) => {
+      return input.replace(/^(.)/g, $1 => {return $1.toUpperCase()});
+    }
+    const itemData = { item: capitalizeText(this.state.item), user: capitalizeText(this.state.user), quantity: capitalizeText(this.state.quantity), notes: capitalizeFirstLetter(this.state.notes), category: this.state.category};
     this.addItemService.sendData(itemData, res => {
       this.props.history.push({
         pathname: '/'
       });
-      this.props.callbackFromHomepage("List updated from AddItem");
     });
   }
   
@@ -74,7 +79,7 @@ class AddItem extends Component {
         <form onSubmit={this.handleSubmit}>
           <label className={ classes.labels }>
             Add Item:
-            <input autoFocus type="text" name="item" value={this.state.item} onChange={this.handleChange} className={ `form-control ${classes.noZoom}`} />
+            <input autoFocus type="text" name="item" value={this.state.item} onChange={this.handleChange} className={ `form-control ${classes.noZoom} ${classes.addItemInput}`} />
           </label><br/>
           <label className={ classes.labels }>
             Category:&nbsp;
@@ -93,7 +98,7 @@ class AddItem extends Component {
           </select><br/><br/>
           <label className={ classes.labels }>
             Quantity:
-            <input type="text" name="quantity" value={this.state.quantity} onChange={this.handleChange} className={ `form-control ${classes.noZoom}` } />
+            <input type="text" name="quantity" value={this.state.quantity} onChange={this.handleChange} className={ `form-control ${classes.noZoom} ${classes.addItemInput}` } />
           </label><br/>
           <label className={ classes.labels }>
             Notes:

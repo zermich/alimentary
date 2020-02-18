@@ -17,6 +17,10 @@ export const EditItemStyles = {
         fontSize: '1em',
     },
 
+    addItemInput: {
+        textTransform: 'capitalize',
+    },
+
     noZoom: {
         fontSize: '100%',
     },

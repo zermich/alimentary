@@ -59,7 +59,13 @@ class EditItem extends Component {
   // Sends updated state data to update item in db
   handleSubmit(event) {
     event.preventDefault();
-    const itemData = { item: this.state.item, user: this.state.user, quantity: this.state.quantity, notes: this.state.notes, category: this.state.category};
+    const capitalizeText = (input) => {
+      return input.replace(/^(.)|\s(.)/g, $1 => {return $1.toUpperCase()});
+    }
+    const capitalizeFirstLetter = (input) => {
+      return input.replace(/^(.)/g, $1 => {return $1.toUpperCase()});
+    }
+    const itemData = { item: capitalizeText(this.state.item), user: capitalizeText(this.state.user), quantity: capitalizeText(this.state.quantity), notes: capitalizeFirstLetter(this.state.notes), category: this.state.category};
     this.addItemService.updateData(itemData, this.props.match.params.id)
     .then( res => {
       this.setState({
