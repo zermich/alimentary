@@ -34,7 +34,6 @@ class ItemsContainer extends Component {
 
   //Populates Categories & Items from database
   itemRow( styleName ) { 
-    console.log(styleName);
     const allItems = []
     for(let i=0; i < this.state.items.length; i++){
       let categoryName = this.state.items[i];
@@ -52,9 +51,7 @@ class ItemsContainer extends Component {
   checkoutItems() {
     this.addItemService.checkout(
       res => {
-        this.addItemService.fetchAndCategorizeItems( res => {
-          this.setState({ items: res.data });
-        });
+        this.updateItemList();
       }
     );
   }

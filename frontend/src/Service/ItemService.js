@@ -70,12 +70,12 @@ class ItemService {
   }
 
   // Updates item isPurchased value
-  updateToggle(data, id) {
+  updateToggle(data, id, successCallback) {
     axios.put(address+'item/'+id, {
       isPurchased: data
     })
           .then( res => {
-            
+            successCallback();
           })
           .catch( err => {
             console.log(err)
